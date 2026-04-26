@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Peserta - VEYKU Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary-blue: #3B38F6;
+            --bg-color: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --text-dark: #1E293B;
+            --text-light: #64748B;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+        }
+
+        .navbar {
+            background: var(--card-bg);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar h2 {
+            margin: 0;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .navbar span {
+            color: var(--primary-blue);
+        }
+
+        .btn-ghost {
+            background: #F1F5F9;
+            color: var(--text-dark);
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            margin-bottom: 30px;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #F1F5F9;
+            color: var(--primary-blue);
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .data-item .label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .data-item .value {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .result-highlight {
+            background: linear-gradient(135deg, #3B38F6, #6D6BFF);
+            color: white;
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .result-highlight h3 {
+            margin: 0 0 10px 0;
+            font-size: 1rem;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        .result-highlight h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+
+        .chart-wrapper {
+            height: 300px;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <h2>VEYKU <span>Admin</span></h2>
+        <div>
+            <a href="{{ url_for('admin.responden_list') }}" class="btn-ghost">← Kembali ke Tabel</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <div class="card">
+            <h2 class="card-title">Profil Peserta</h2>
+            <div class="data-grid">
+                <div class="data-item">
+                    <div class="label">NIS</div>
+                    <div class="value" style="font-family: monospace; font-size: 1.1rem;">{{ respondent.nis }}</div>
+                </div>
+                <div class="data-item">
+                    <div class="label">Nama Lengkap</div>
+                    <div class="value" style="font-weight: 700;">{{ respondent.nama }}</div>
+                </div>
+                <div class="data-item">
+                    <div class="label">Jurusan SMK 1 Dps</div>
+                    <div class="value">{{ respondent.jurusan_smk }}</div>
+                </div>
+                <div class="data-item">
+                    <div class="label">Alamat Email</div>
+                    <div class="value">{{ respondent.email }}</div>
+                </div>
+                <div class="data-item">
+                    <div class="label">Nomor WhatsApp</div>
+                    <div class="value">{{ respondent.no_wa }}</div>
+                </div>
+            </div>
+        </div>
+
+        {% if survey %}
+        <div class="result-highlight">
+            <h3>Rumpun Rekomendasi Terbaik</h3>
+            <h1>{{ survey.hasil_rekomendasi }}</h1>
+        </div>
+
+        <div class="card" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+            <div>
+                <h2 class="card-title" style="border-bottom: none; margin-bottom: 20px;">Rincian Poin Tes</h2>
+                <div class="data-item" style="margin-bottom: 15px;">
+                    <div class="label" style="color: #3B82F6;">Teknik & IT</div>
+                    <div class="value">{{ survey.skor_teknik }} Poin</div>
+                </div>
+                <div class="data-item" style="margin-bottom: 15px;">
+                    <div class="label" style="color: #10B981;">Sains & Medis</div>
+                    <div class="value">{{ survey.skor_medis }} Poin</div>
+                </div>
+                <div class="data-item" style="margin-bottom: 15px;">
+                    <div class="label" style="color: #F59E0B;">Bisnis & Manajemen</div>
+                    <div class="value">{{ survey.skor_bisnis }} Poin</div>
+                </div>
+                <div class="data-item" style="margin-bottom: 15px;">
+                    <div class="label" style="color: #EC4899;">Seni & Desain</div>
+                    <div class="value">{{ survey.skor_seni }} Poin</div>
+                </div>
+                <div class="data-item">
+                    <div class="label" style="color: #8B5CF6;">Sosial & Humaniora</div>
+                    <div class="value">{{ survey.skor_soshum }} Poin</div>
+                </div>
+            </div>
+            <div class="chart-wrapper">
+                <canvas id="detailChart"></canvas>
+            </div>
+        </div>
+        
+        <script>
+            const ctx = document.getElementById('detailChart');
+            new Chart(ctx, {
+                type: 'polarArea',
+                data: {
+                    labels: ['Teknik & IT', 'Sains & Medis', 'Bisnis & Manajemen', 'Seni & Desain', 'Sosial & Humaniora'],
+                    datasets: [{
+                        data: [{{ survey.skor_teknik }}, {{ survey.skor_medis }}, {{ survey.skor_bisnis }}, {{ survey.skor_seni }}, {{ survey.skor_soshum }}],
+                        backgroundColor: [
+                            'rgba(59, 130, 246, 0.6)',
+                            'rgba(16, 185, 129, 0.6)',
+                            'rgba(245, 158, 11, 0.6)',
+                            'rgba(236, 72, 153, 0.6)',
+                            'rgba(139, 92, 246, 0.6)'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } }
+                }
+            });
+        </script>
+        {% endif %}
+
+    </div>
+</body>
+</html>

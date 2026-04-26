@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}VEYKU - Tentukan Jurusan Kuliahmu{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1A6AFB;
+            --text-dark: #1A1A1A;
+            --text-light: #666666;
+            --bg-color: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .navbar-brand {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .navbar-nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--text-dark);
+        }
+
+        .nav-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid #E0E0E0;
+            color: var(--text-dark);
+            text-decoration: none;
+        }
+
+        .nav-icon svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Utility Classes */
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 12px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 106, 251, 0.3);
+        }
+
+        .flash-messages {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+        }
+
+        .alert {
+            padding: 12px 24px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            font-weight: 500;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .alert-error { background: #fee2e2; color: #991b1b; }
+        .alert-success { background: #dcfce3; color: #166534; }
+        
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        {% block extra_css %}{% endblock %}
+    </style>
+</head>
+<body class="{% block body_class %}{% endblock %}">
+
+    <nav class="navbar">
+        <a href="{{ url_for('survey.landing') }}" class="navbar-brand">VEYKU</a>
+        <div class="navbar-nav">
+            <a href="{{ url_for('survey.landing') }}" class="nav-link">Survey</a>
+            <!-- Link ke halaman about nanti -->
+            <a href="{{ url_for('survey.about') }}" class="nav-link">About</a>
+            <a href="{{ url_for('auth.login') }}" class="nav-icon" title="Login Admin">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+            </a>
+        </div>
+    </nav>
+
+    <div class="flash-messages">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+    </div>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
