@@ -1,0 +1,66 @@
+:root {
+    /* Colors - Berdasarkan UI VEYKU */
+    --primary-blue: #2563eb;
+    --primary-hover: #1d4ed8;
+    --bg-light: #f8fafc;
+    --bg-dark: #0f172a;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --white: #ffffff;
+    --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    
+    /* Border Radius */
+    --rounded-lg: 12px;
+    --rounded-full: 9999px;
+
+    /* Fonts */
+    --font-main: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    font-family: var(--font-main);
+    margin: 0;
+    padding: 0;
+}
+
+/* Tambahkan di variables.css */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    /* Font yang lebih mirip Figma (modern & clean) */
+    --font-main: 'Plus Jakarta Sans', sans-serif;
+    
+    /* Shadow yang lebih halus (Gaya Glassmorphism/Modern UI) */
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.02);
+    --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.02);
+    --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.05), 0 10px 10px -5px rgba(0,0,0,0.02);
+    
+    /* Warna gradasi untuk background hero */
+    --grad-bg: linear-gradient(135deg, #f8faff 0%, #eef2ff 100%);
+}
+
+/* Custom Scrollbar (Biar gak kaku di Chrome/Edge) */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
+
+/* Warna saat teks di-highlight */
+::selection {
+    background: rgba(37, 99, 235, 0.2);
+    color: var(--primary-blue);
+}
