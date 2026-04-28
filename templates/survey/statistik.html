@@ -3,27 +3,36 @@
 {% block title %}VEYKU - Statistik Global{% endblock %}
 
 {% block content %}
-<div class="result-container">
+<div class="result-container fade-in">
     <div class="result-header-box">
         <h1 class="result-main-title">Statistik Minat & Bakat</h1>
         <p class="result-desc">Lihat bagaimana kecenderungan minat jurusan dari peserta VEYKU secara global.</p>
     </div>
 
-    <div class="stats-grid-container">
-        <div class="card-mini-stats">
+    <div class="stats-grid-container fade-in-scale" style="animation-delay: 0.2s;">
+        <div class="card-mini-stats hover-scale">
+            <div class="icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+            </div>
             <div class="label">Total Peserta</div>
             <div class="number">{{ total_responden }}</div>
         </div>
         </div>
 
-    <div class="chart-main-box">
-        <h3 class="chart-title">Distribusi Rumpun Jurusan</h3>
-        <canvas id="myChart"></canvas>
+    <div class="chart-main-box fade-in-scale" style="animation-delay: 0.4s; margin: 40px auto; max-width: 600px; width: 100%;">
+        <h3 class="chart-title" style="text-align: center; margin-bottom: 30px;">Distribusi Rumpun Jurusan</h3>
+        <div class="canvas-wrapper" style="position: relative; height: 400px; width: 100%;">
+            <canvas id="myChart"></canvas>
+        </div>
     </div>
 
-    <div class="action-buttons" style="display: flex; justify-content: center; gap: 20px; margin-top: 40px;">
+    <div class="action-buttons fade-in" style="display: flex; justify-content: center; gap: 20px; margin-top: 40px; animation-delay: 0.6s;">
         <a href="{{ url_for('survey.landing') }}" class="btn-secondary">Kembali ke Beranda</a>
-        <a href="{{ url_for('survey.data_diri') }}" class="btn-primary">Ikuti Tes Sekarang</a>
     </div>
 </div>
 

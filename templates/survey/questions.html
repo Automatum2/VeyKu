@@ -20,7 +20,7 @@
 
     <div id="questions-wrapper">
         {% for q in questions %}
-        <div class="question-card {% if loop.index == 1 %}active{% endif %}" id="q-{{ q.id }}">
+        <div class="question-card {% if loop.index == 1 %}active slide-in-right{% endif %}" id="q-{{ q.id }}">
             <h3 class="question-title-text">{{ q.question }}</h3>
             <div class="options-list">
                 {% for opt in q.options %}
@@ -83,13 +83,26 @@
     }
 
     function showNextQuestion(nextId) {
-        document.querySelector('.question-card.active').classList.remove('active');
+        const currentCard = document.querySelector('.question-card.active');
         const nextCard = document.getElementById('q-' + nextId);
-        if(nextCard) {
-            nextCard.classList.add('active');
-            document.getElementById('current-q').textContent = nextId;
-            const percentage = (nextId / totalQuestions) * 100;
-            document.getElementById('progress-bar').style.width = percentage + '%';
+        
+        if(currentCard && nextCard) {
+            // Jalankan animasi keluar ke kiri
+            currentCard.classList.remove('active', 'slide-in-right');
+            currentCard.classList.add('slide-out-left');
+            
+            // Tunggu animasi keluar selesai (300ms)
+            setTimeout(() => {
+                currentCard.classList.remove('slide-out-left');
+                
+                // Tampilkan card berikutnya dari kanan
+                nextCard.classList.add('active', 'slide-in-right');
+                
+                // Update Progress Header & Bar
+                document.getElementById('current-q').textContent = nextId;
+                const percentage = (nextId / totalQuestions) * 100;
+                document.getElementById('progress-bar').style.width = percentage + '%';
+            }, 300);
         }
     }
 

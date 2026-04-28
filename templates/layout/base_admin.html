@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}VEYKU Admin{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/variables.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+<body>
+
+    <!-- Navbar Admin -->
+    <nav class="navbar">
+        <h2>VEYKU <span>Admin</span></h2>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <a href="{{ url_for('admin.dashboard') }}" class="btn-ghost">Dashboard</a>
+            <a href="{{ url_for('admin.responden_list') }}" class="btn-ghost">Tabel Data</a>
+            
+            <!-- Dark Mode Toggle Button -->
+            <button id="theme-toggle" class="nav-icon theme-btn" aria-label="Toggle Dark Mode">
+                <!-- Ikon Moon (Default/Light Mode) -->
+                <svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+                </svg>
+                <!-- Ikon Sun (Dark Mode) -->
+                <svg id="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="display:none;">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+            </button>
+            
+            <a href="{{ url_for('auth.logout') }}" class="logout-btn">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Flash Messages (jika ada notifikasi) -->
+    <div class="flash-messages" style="position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 9999; display: flex; flex-direction: column; gap: 10px;">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }}" style="padding: 15px 25px; border-radius: 8px; font-weight: bold; text-align: center; color: white; background-color: {% if category == 'error' or category == 'danger' %}#ef4444{% else %}#10b981{% endif %}; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                  {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+    </div>
+
+    <!-- Konten Utama -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Script auto-hide untuk flash messages -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const alerts = document.querySelectorAll('.alert');
+            if(alerts.length > 0) {
+                setTimeout(() => {
+                    alerts.forEach(alert => {
+                        alert.style.transition = 'all 0.5s ease';
+                        alert.style.opacity = '0';
+                        alert.style.transform = 'translateY(-20px)';
+                        setTimeout(() => alert.remove(), 500);
+                    });
+                }, 3500);
+            }
+        });
+
+        // =====================================
+        // LOGIKA DARK MODE (GLOBAL)
+        // =====================================
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIconMoon = document.getElementById('theme-icon-moon');
+        const themeIconSun = document.getElementById('theme-icon-sun');
+
+        // Fungsi apply tema
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            if (theme === 'dark') {
+                themeIconMoon.style.display = 'none';
+                themeIconSun.style.display = 'block';
+            } else {
+                themeIconMoon.style.display = 'block';
+                themeIconSun.style.display = 'none';
+            }
+        }
+
+        // Cek LocalStorage saat halaman dimuat
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        applyTheme(savedTheme);
+
+        // Event listener klik tombol
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                applyTheme(newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+        }
+    </script>
+</body>
+</html>

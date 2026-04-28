@@ -2,47 +2,50 @@
 
 {% block title %}MajorMind - Tentang Kami{% endblock %}
 
+{% block body_class %}about-page-body{% endblock %}
+
 {% block extra_css %}
 /* CSS sudah dipindahkan ke static/css/survey.css */
 {% endblock %}
 
 {% block content %}
-<div class="about-page-body"> <div class="about-container">
-        <h1 class="about-title">TENTANG KAMI</h1>
-        
-        <div class="about-grid">
+<div class="about-container fade-in">
+    <h1 class="about-title">TENTANG KAMI</h1>
+    
+    <div class="about-grid">
+        <div class="hero-image-wrapper">
+            <div class="center-image-fallback"></div>
             <img src="{{ url_for('static', filename='foto/orang_kacamata.png') }}" 
                  alt="Student Model" 
                  class="center-image" 
                  onerror="this.style.display='none'">
-            <div class="center-image-fallback"></div>
+        </div>
 
-            <div class="info-box box-cerita">
-                <div class="info-title">Cerita di Balik <span class="text-blue">VEYKU</span></div>
-                <div class="info-text">
-                    VEYKU lahir dari keresahan yang nyata. Sebagai sesama pelajar yang juga pernah berada di persimpangan jalan—menentukan apakah harus lanjut kuliah atau berkarier—saya menyadari bahwa banyak dari kita seringkali membuat keputusan besar hanya berdasarkan "katanya". VEYKU dikembangkan sebagai proyek independen untuk membantu teman-teman seangkatan agar bisa mengambil keputusan berdasarkan pemahaman diri yang lebih baik.
-                </div>
+        <div class="info-box box-cerita hover-scale reveal-on-scroll reveal-delay-1">
+            <div class="info-title">Cerita di Balik <span class="text-blue">VEYKU</span></div>
+            <div class="info-text">
+                VEYKU lahir dari keresahan yang nyata. Sebagai sesama pelajar yang juga pernah berada di persimpangan jalan—menentukan apakah harus lanjut kuliah atau berkarier—saya menyadari bahwa banyak dari kita seringkali membuat keputusan besar hanya berdasarkan "katanya". VEYKU dikembangkan sebagai proyek independen untuk membantu teman-teman seangkatan agar bisa mengambil keputusan berdasarkan pemahaman diri yang lebih baik.
             </div>
+        </div>
 
-            <div class="info-box box-harapan">
-                <div class="info-title">Harapan Kami</div>
-                <div class="info-text">
-                    Kami berharap VEYKU tidak hanya menjadi sekadar website pengumpul data, tetapi menjadi alat bantu yang memberikan ketenangan bagi setiap siswa. Jika melalui VEYKU satu saja orang terbantu untuk menemukan jurusan impiannya, maka tujuan besar kami telah tercapai.
-                </div>
+        <div class="info-box box-harapan hover-scale reveal-on-scroll reveal-delay-2">
+            <div class="info-title">Harapan Kami</div>
+            <div class="info-text">
+                Kami berharap VEYKU tidak hanya menjadi sekadar website pengumpul data, tetapi menjadi alat bantu yang memberikan ketenangan bagi setiap siswa. Jika melalui VEYKU satu saja orang terbantu untuk menemukan jurusan impiannya, maka tujuan besar kami telah tercapai.
             </div>
+        </div>
 
-            <div class="info-box box-visi">
-                <div class="info-title">VISI MISI</div>
-                <div class="info-text">
-                    Menjadi jembatan digital yang inklusif bagi setiap siswa SMA/SMK di Indonesia dalam menemukan jalur pendidikan yang tepat. Kami percaya bahwa pilihan jurusan yang tepat adalah langkah awal bagi kesuksesan karier di masa depan.
-                </div>
+        <div class="info-box box-visi hover-scale reveal-on-scroll reveal-delay-3">
+            <div class="info-title">VISI MISI</div>
+            <div class="info-text">
+                Menjadi jembatan digital yang inklusif bagi setiap siswa SMA/SMK di Indonesia dalam menemukan jalur pendidikan yang tepat. Kami percaya bahwa pilihan jurusan yang tepat adalah langkah awal bagi kesuksesan karier di masa depan.
             </div>
+        </div>
 
-            <div class="info-box box-kenapa">
-                <div class="info-title">Kenapa <span class="text-blue">VEYKU</span>?</div>
-                <div class="info-text">
-                    Kami hadir untuk menghapus rasa cemas akibat "salah jurusan". Dengan pendekatan berbasis data yang intuitif, VEYKU menggabungkan kemudahan akses dengan hasil yang relevan. Kami merancang alur survey agar tidak membosankan, sehingga kamu bisa mendapatkan insight mendalam tanpa drama.
-                </div>
+        <div class="info-box box-kenapa hover-scale reveal-on-scroll reveal-delay-4">
+            <div class="info-title">Kenapa <span class="text-blue">VEYKU</span>?</div>
+            <div class="info-text">
+                Kami hadir untuk menghapus rasa cemas akibat "salah jurusan". Dengan pendekatan berbasis data yang intuitif, VEYKU menggabungkan kemudahan akses dengan hasil yang relevan. Kami merancang alur survey agar tidak membosankan, sehingga kamu bisa mendapatkan insight mendalam tanpa drama.
             </div>
         </div>
     </div>

@@ -3,21 +3,21 @@
 {% block title %}VEYKU - Hasil Analisis{% endblock %}
 
 {% block content %}
-<div class="result-container">
+<div class="result-container fade-in">
     <div class="result-header-box">
         <h1 class="result-main-title">Hasil Pemetaan, {{ nama }}!</h1>
         <p class="result-desc">Algoritma VEYKU telah menganalisis minat dan bakatmu.</p>
     </div>
 
-    <div class="winner-card-gradient">
+    <div class="winner-card-gradient fade-in-scale" style="animation-delay: 0.2s;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
             <span style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; opacity: 0.9;">
                 Rumpun Jurusan Terbaikmu
             </span>
             {% if is_selaras %}
-                <span class="badge-status badge-selaras">✓ SELARAS DENGAN JURUSAN {{ jurusan_smk }}</span>
+                <span class="badge-status badge-selaras hover-scale">✓ SELARAS DENGAN JURUSAN {{ jurusan_smk }}</span>
             {% else %}
-                <span class="badge-status badge-lintas">⚠ LINTAS JURUSAN DARI {{ jurusan_smk }}</span>
+                <span class="badge-status badge-lintas hover-scale">⚠ LINTAS JURUSAN DARI {{ jurusan_smk }}</span>
             {% endif %}
         </div>
 
@@ -29,7 +29,7 @@
             </p>
             <div style="display: flex; flex-wrap: wrap; gap: 8px;">
                 {% for jurusan in rekomendasi_jurusan %}
-                    <span class="tag-prodi">{{ jurusan }}</span>
+                    <span class="tag-prodi hover-scale">{{ jurusan }}</span>
                 {% endfor %}
             </div>
         </div>
@@ -39,7 +39,7 @@
         </p>
     </div>
 
-    <div class="stats-card-white">
+    <div class="stats-card-white fade-in" style="animation-delay: 0.4s;">
         <h3 style="margin-bottom: 24px; font-size: 1.3rem; font-weight: 800;">Detail Kesesuaian (Persentase)</h3>
         
         {% for key, value in skor.items() %}
@@ -51,14 +51,14 @@
             </div>
             <div class="stat-bar-outer">
                 <div class="stat-bar-inner {% if key != hasil %}stat-bar-other{% endif %}" 
-                     style="width: {{ percentage }}%;">
+                     style="width: {{ percentage }}%; transition-delay: {{ loop.index * 0.1 }}s;">
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
 
-    <div class="action-buttons" style="display: flex; justify-content: center; gap: 20px;">
+    <div class="action-buttons fade-in" style="display: flex; justify-content: center; gap: 20px; animation-delay: 0.6s;">
         <a href="{{ url_for('survey.landing') }}" class="btn-secondary">Kembali ke Beranda</a>
         <a href="{{ url_for('survey.statistik') }}" class="btn-primary">Lihat Statistik Global</a>
     </div>

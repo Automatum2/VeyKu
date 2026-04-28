@@ -9,20 +9,20 @@
 {% block content %}
 <div class="landing-wrapper"></div>
 
-<div class="hero-content">
+<div class="hero-content fade-in-scale">
     <h1 class="hero-title-landing">Pilih Jurusan Gak Pake Pusing cek di <span>VEYKU</span> aJa</h1>
     <p class="hero-subtitle-landing">
         Platform tes minat bakat modern untuk memetakan potensimu ke dalam 5 rumpun jurusan kuliah yang paling tepat.
     </p>
-    <a href="{{ url_for('survey.data_diri') }}" class="btn-primary hero-btn-large">Mulai Tes Sekarang</a>
+    <a href="{{ url_for('survey.data_diri') }}" class="btn-primary hero-btn-large hover-scale">Mulai Tes Sekarang</a>
 </div>
 
-<div class="steps-section">
+<div class="steps-section fade-in">
     <span class="section-label">Panduan Cepat</span>
     <h2 class="section-title-steps">Cara Menggunakan VEYKU</h2>
     
     <div class="steps-grid">
-        <div class="step-card">
+        <div class="step-card hover-scale reveal-on-scroll reveal-delay-1">
             <div class="step-number">01</div>
             <div class="step-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 22 7-15 7 15"/><path d="M12 2v3"/><path d="M22 17H2"/></svg>
@@ -31,7 +31,7 @@
             <p>Tekan tombol "Mulai Tes Sekarang" untuk membuka gerbang masa depanmu.</p>
         </div>
 
-        <div class="step-card">
+        <div class="step-card hover-scale reveal-on-scroll reveal-delay-2">
             <div class="step-number">02</div>
             <div class="step-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
@@ -40,7 +40,7 @@
             <p>Masukkan NIS dan informasi dasarmu agar hasil tes bisa kami petakan dengan akurat.</p>
         </div>
 
-        <div class="step-card">
+        <div class="step-card hover-scale reveal-on-scroll reveal-delay-3">
             <div class="step-number">03</div>
             <div class="step-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.54-2.44V4.5A2.5 2.5 0 0 1 7 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.54-2.44V4.5A2.5 2.5 0 0 0 17 2z"/></svg>
@@ -49,14 +49,15 @@
             <p>Selesaikan 15 pertanyaan singkat yang akan mengungkap minat dan bakat terpendammu.</p>
         </div>
 
-        <div class="step-card">
+        <div class="step-card hover-scale reveal-on-scroll reveal-delay-4">
             <div class="step-number">04</div>
             <div class="step-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
             </div>
             <h3>Lihat Hasil</h3>
-            <p>Dapatkan rekomendasi rumpun jurusan kuliah yang paling selaras dengan kepribadianmu.</p>
+            <p>Dapatkan persentase kecocokanmu dengan 5 rumpun jurusan dan rekomendasi program studi spesifik.</p>
         </div>
+
     </div>
 </div>
 {% endblock %}

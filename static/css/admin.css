@@ -529,3 +529,98 @@ tbody tr:hover {
 .text-muted {
     color: var(--text-light);
 }
+
+/* ==========================================
+   DARK MODE ADMIN
+   ========================================== */
+[data-theme="dark"] {
+    --bg-color: #0F172A;
+    --card-bg: #1E293B;
+    --text-dark: #F8FAFC;
+    --text-light: #94A3B8;
+}
+
+[data-theme="dark"] body {
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+}
+
+[data-theme="dark"] .navbar {
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    background: var(--card-bg);
+}
+
+[data-theme="dark"] .stat-card,
+[data-theme="dark"] .chart-box,
+[data-theme="dark"] .card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+[data-theme="dark"] .table-container,
+[data-theme="dark"] .table-wrapper {
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+[data-theme="dark"] .table th {
+    background: rgba(255,255,255,0.05);
+    color: var(--text-dark);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+[data-theme="dark"] .table td {
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: var(--text-light);
+}
+
+[data-theme="dark"] .table tbody tr:hover {
+    background: rgba(255,255,255,0.02);
+}
+
+[data-theme="dark"] .btn-ghost {
+    background: rgba(255,255,255,0.05);
+    color: var(--text-dark);
+}
+
+[data-theme="dark"] .btn-ghost:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+[data-theme="dark"] .welcome-text,
+[data-theme="dark"] .stat-title,
+[data-theme="dark"] .card-title,
+[data-theme="dark"] .label {
+    color: var(--text-dark);
+}
+
+[data-theme="dark"] .stat-number,
+[data-theme="dark"] .value {
+    color: var(--text-dark);
+}
+
+/* Theme Toggle Button Style */
+.nav-icon.theme-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--text-dark);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+    outline: none;
+}
+.nav-icon.theme-btn:hover {
+    background: rgba(0,0,0,0.05);
+}
+[data-theme="dark"] .nav-icon.theme-btn {
+    color: #F8FAFC;
+    background: rgba(255,255,255,0.05);
+}
+[data-theme="dark"] .nav-icon.theme-btn:hover {
+    background: rgba(255,255,255,0.1);
+}

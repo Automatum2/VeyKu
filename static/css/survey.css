@@ -26,11 +26,30 @@
     border: none;
     cursor: pointer;
     display: inline-block;
+    text-align: center;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-blue);
+    padding: 12px 32px;
+    border-radius: var(--rounded-full);
+    text-decoration: none;
+    font-weight: 600;
+    border: 2px solid var(--primary-blue);
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(37, 99, 235, 0.1);
 }
 
 /* Question Cards (Halaman Pertanyaan) */
 .question-container {
-    max-width: 700px;
+    max-width: 800px;
     margin: 40px auto;
     background: white;
     padding: 30px;
@@ -111,17 +130,30 @@
     transition: width 0.4s ease;
 }
 
-/* Navbar Styles */
+/* Navbar Styles (Floating & Glassmorphism) */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 40px;
-    background: white;
+    padding: 15px 30px;
+    margin: 20px auto 0;
+    max-width: 1100px;
+    background: transparent; /* Transparan secara default */
     position: sticky;
-    top: 0;
+    top: 20px;
     z-index: 1000;
-    box-shadow: var(--shadow-sm);
+    border-radius: var(--rounded-full);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* State ketika halaman di-scroll */
+.navbar.scrolled {
+    background: var(--bg-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 12px 30px;
 }
 
 .navbar-brand {
@@ -134,13 +166,35 @@
 
 @media (max-width: 768px) {
     .navbar {
-        padding: 15px 20px;
+        margin: 10px 10px 0;
+        padding: 10px 15px;
+        top: 10px;
+        gap: 15px; /* Mencegah logo dan menu saling menempel */
+    }
+    .navbar.scrolled {
+        padding: 8px 15px;
+    }
+    .navbar-brand {
+        font-size: 1.2rem;
+        gap: 5px !important;
+    }
+    .navbar-brand img {
+        width: 24px;
+        height: 24px;
     }
     .navbar-nav {
-        gap: 16px;
+        gap: 12px;
     }
     .nav-link {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
+    }
+    .nav-icon {
+        width: 36px;
+        height: 36px;
+    }
+    .nav-icon svg {
+        width: 18px;
+        height: 18px;
     }
 }
 
@@ -329,8 +383,9 @@
    ABOUT PAGE STYLES (Tentang Kami)
    ========================================== */
 .about-page-body {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: var(--bg-dark); /* Menggunakan Slate Tua, bukan Hitam Pekat */
+    color: var(--white);
+    min-height: 100vh;
 }
 
 .about-container {
@@ -346,6 +401,36 @@
     font-weight: 800;
     margin-bottom: 60px;
     letter-spacing: 2px;
+    color: var(--white);
+}
+
+/* Modifikasi navbar khusus halaman about yang gelap */
+.about-page-body .navbar-brand {
+    color: var(--white);
+}
+
+.about-page-body .nav-link {
+    color: #cbd5e1;
+}
+
+.about-page-body .nav-link:hover {
+    color: var(--white);
+}
+
+.about-page-body .nav-icon {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.about-page-body .nav-icon:hover {
+    background: var(--white);
+    color: var(--bg-dark);
+}
+
+.about-page-body .navbar.scrolled {
+    background: rgba(15, 23, 42, 0.8); /* Slate semi-transparan */
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 .about-grid {
@@ -356,20 +441,29 @@
     min-height: 800px;
 }
 
+.hero-image-wrapper {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 10;
+}
+
 .center-image {
     width: 350px;
     height: auto;
-    z-index: 10;
     position: relative;
+    z-index: 10;
 }
 
 .center-image-fallback {
     width: 350px;
-    height: 500px;
+    height: 350px;
     background: linear-gradient(to top, rgba(0,0,0,1), rgba(59,56,246,0.3));
-    border-radius: 200px 200px 0 0;
+    border-radius: 50%;
     position: absolute;
-    bottom: 0;
+    bottom: 0px;
+    top: 50px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 5;
@@ -453,11 +547,13 @@
    REGISTRATION PAGE STYLES (Data Diri)
    ========================================== */
 .register-container {
-    max-width: 600px;
+    max-width: 800px;
     margin: 60px auto;
     padding: 40px;
     background: #FFFFFF;
     text-align: center;
+    border-radius: var(--rounded-lg);
+    box-shadow: var(--shadow-lg);
 }
 
 .register-title {
@@ -528,10 +624,7 @@
     left: 0;
     width: 100%;
     height: 100vh;
-    background: radial-gradient(circle at 20% 30%, rgba(59, 56, 246, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(59, 56, 246, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(59, 56, 246, 0.05) 0%, rgba(255, 255, 255, 1) 100%);
-    background-color: #FAFAFF;
+    background: var(--grad-bg);
     z-index: -1;
     overflow: hidden;
 }
@@ -543,7 +636,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.05);
+    background: radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(37, 99, 235, 0.03) 0%, transparent 50%);
     pointer-events: none;
 }
 
@@ -703,7 +797,7 @@
    QUESTIONS PAGE STYLES (questions.html)
    ========================================== */
 .survey-container {
-    max-width: 700px;
+    max-width: 800px;
     margin: 40px auto;
     padding: 0 20px;
 }
@@ -738,11 +832,17 @@
 
 .question-card {
     display: none;
+    opacity: 0;
 }
 
 .question-card.active {
     display: block;
-    animation: fadeInUp 0.5s ease-out; /* Menggunakan animasi dari animations.css */
+    opacity: 1;
+    /* Kita hapus fadeInUp dari sini, karena akan dihandle oleh class slide-in-right via JS */
+}
+
+.question-card.slide-out-left {
+    display: block; /* Tetap block saat proses animasi keluar */
 }
 
 .question-title-text {
@@ -826,10 +926,71 @@
 }
 
 /* ==========================================
+   MINI STATS CARD (Statistik Global)
+   ========================================== */
+.stats-grid-container {
+    display: flex;
+    justify-content: center;
+    margin: 30px auto 40px;
+    width: 100%;
+}
+
+.card-mini-stats {
+    background: #ffffff;
+    border-radius: var(--rounded-lg);
+    box-shadow: var(--shadow-md);
+    padding: 24px 40px;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-width: 250px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s;
+}
+
+.card-mini-stats:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card-mini-stats .icon-wrapper {
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--primary-blue);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+.card-mini-stats .label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.card-mini-stats .number {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--primary-blue);
+    line-height: 1;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #6D6BFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ==========================================
    RESULT PAGE STYLES (result.html)
    ========================================== */
 .result-container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 40px auto;
     padding: 0 20px;
     animation: fadeInUp 0.8s ease-out;
@@ -943,5 +1104,161 @@
     .winner-card-gradient { padding: 25px 20px; }
     .result-main-title { font-size: 1.8rem; }
     .action-buttons { flex-direction: column; width: 100%; gap: 12px; }
-    .btn-secondary, .btn-primary { width: 100%; text-align: center; }
+    .btn-secondary, .btn-primary { 
+        width: 100%; 
+        text-align: center; 
+        box-sizing: border-box; 
+    }
+}
+
+/* ==========================================
+   FLASH MESSAGES & ALERTS
+   ========================================== */
+.flash-messages {
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    translate: -50% 0; /* Modern alternative to transform: translateX */
+    z-index: 9999;
+    width: 90%;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    pointer-events: none; /* So it doesn't block clicks underneath if transparent */
+}
+
+.alert {
+    padding: 16px 24px;
+    border-radius: 16px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 15px 30px rgba(239, 68, 68, 0.2);
+    animation: fadeInDownAlert 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    pointer-events: auto;
+}
+
+.alert-error, .alert-danger {
+    background-color: #ef4444; /* Merah sedikit terang */
+    color: #ffffff;
+    border: 1px solid #dc2626;
+}
+
+.alert-success {
+    background-color: #10b981;
+    color: #ffffff;
+    box-shadow: 0 15px 30px rgba(16, 185, 129, 0.2);
+    border: 1px solid #059669;
+}
+
+@keyframes fadeInDownAlert {
+    from { opacity: 0; translate: 0 -20px; }
+    to { opacity: 1; translate: 0 0; }
+}
+
+/* ==========================================
+   DARK MODE COMPONENT OVERRIDES
+   ========================================== */
+[data-theme="dark"] .question-container,
+[data-theme="dark"] .stats-card-white,
+[data-theme="dark"] .info-box,
+[data-theme="dark"] .register-container,
+[data-theme="dark"] .option-item-btn,
+[data-theme="dark"] .card-mini-stats {
+    background: var(--bg-dark);
+    color: var(--text-main);
+    border-color: rgba(255,255,255,0.1);
+    box-shadow: var(--shadow-md);
+}
+
+[data-theme="dark"] .glass-card,
+[data-theme="dark"] .step-card {
+    background: rgba(15, 23, 42, 0.6);
+    border-color: rgba(255,255,255,0.1);
+    color: var(--text-main);
+}
+
+[data-theme="dark"] .step-card:hover {
+    background: var(--bg-dark);
+}
+
+[data-theme="dark"] .nav-icon {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.1);
+    color: var(--text-main);
+}
+
+[data-theme="dark"] .option-item-btn:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: var(--primary-blue);
+}
+
+[data-theme="dark"] .emoji-box {
+    background: rgba(255,255,255,0.1);
+}
+
+[data-theme="dark"] .option-item-btn:hover .emoji-box {
+    background: rgba(255,255,255,0.2);
+}
+
+[data-theme="dark"] .option-label-text,
+[data-theme="dark"] .step-card h3,
+[data-theme="dark"] .hero-title-landing,
+[data-theme="dark"] .section-title-steps,
+[data-theme="dark"] .register-title,
+[data-theme="dark"] .result-main-title {
+    color: var(--text-main);
+}
+
+[data-theme="dark"] .form-control-underline,
+[data-theme="dark"] .form-input {
+    color: var(--text-main);
+    border-color: rgba(255,255,255,0.2);
+}
+
+[data-theme="dark"] .form-control-underline option {
+    background: var(--bg-dark);
+    color: var(--text-main);
+}
+
+[data-theme="dark"] .stat-bar-outer {
+    background: rgba(255,255,255,0.1);
+}
+
+/* ==========================================
+   MOBILE RESPONSIVENESS OVERRIDES (GLOBAL)
+   ========================================== */
+@media (max-width: 768px) {
+    /* Mengurangi padding agar layar HP tidak termakan ruang kosong */
+    .question-container,
+    .register-container,
+    .result-container,
+    .stats-card-white,
+    .winner-card-gradient,
+    .info-box,
+    .thankyou-card {
+        padding: 24px 16px !important;
+        margin: 20px auto !important;
+        width: 92% !important;
+        box-sizing: border-box;
+    }
+
+    /* Menurunkan ukuran judul besar agar tidak patah di layar kecil */
+    .hero-title, 
+    .register-title, 
+    .result-main-title, 
+    .chart-title,
+    .about-title {
+        font-size: 2rem !important;
+        line-height: 1.3 !important;
+    }
+
+    .about-container {
+        padding: 10px !important;
+    }
+    
+    .question-title-text {
+        font-size: 1.4rem !important;
+    }
 }
