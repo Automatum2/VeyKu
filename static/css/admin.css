@@ -1,0 +1,250 @@
+/* Layout Wrapper */
+.admin-container {
+    padding: 20px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header & Logout Area */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.admin-logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--primary-blue);
+}
+
+/* Statistics Cards (Grid System) */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.card-stat {
+    background: white;
+    padding: 20px;
+    border-radius: var(--rounded-lg);
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease;
+}
+
+.card-stat:first-child {
+    background-color: var(--primary-blue);
+    color: white;
+}
+
+.card-stat:first-child .stat-value, 
+.card-stat:first-child .stat-label {
+    color: white;
+}
+
+.stat-label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.stat-value {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+/* Data Table Section */
+.table-container {
+    background: white;
+    padding: 25px;
+    border-radius: var(--rounded-lg);
+    box-shadow: var(--card-shadow);
+    overflow-x: auto;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.admin-table th {
+    text-align: left;
+    padding: 12px;
+    font-size: 13px;
+    color: var(--text-muted);
+    border-bottom: 2px solid #f1f5f9;
+    text-transform: uppercase;
+}
+
+.admin-table td {
+    padding: 15px 12px;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 14px;
+}
+
+/* Empty State (Tampilan jika belum ada data) */
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-muted);
+}
+
+/* Button Dashboard */
+.btn-outline {
+    border: 2px solid var(--primary-blue);
+    color: var(--primary-blue);
+    padding: 8px 16px;
+    border-radius: var(--rounded-lg);
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.btn-outline:hover {
+    background-color: var(--primary-blue);
+    color: white;
+}
+
+/* Sidebar/Navbar Admin */
+.admin-nav {
+    background: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--primary-blue);
+}
+
+/* Badge untuk rekomendasi di tabel */
+.badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.badge-tech { background: #dbeafe; color: #1e40af; }
+.badge-art { background: #fce7f3; color: #9d174d; }
+.badge-business { background: #fef3c7; color: #92400e; }
+
+/* Action Buttons di Tabel */
+.btn-action {
+    padding: 6px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.btn-delete { background: #fee2e2; color: #b91c1c; }
+.btn-edit { background: #f1f5f9; color: #475569; }
+
+/* Avatar Lingkaran di Tabel */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar-circle {
+    width: 32px;
+    height: 32px;
+    background: #eef2ff;
+    color: var(--primary-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+/* Baris Tabel yang di-hover */
+.admin-table tbody tr {
+    transition: background 0.2s;
+}
+
+.admin-table tbody tr:hover {
+    background-color: #f8fafc;
+    cursor: pointer;
+}
+
+/* Card Badge untuk Jurusan di Tabel */
+.jurusan-tag {
+    padding: 4px 10px;
+    background: #f1f5f9;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #475569;
+}
+
+/* Modal Backdrop */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.5); /* Warna bg-dark dengan transparansi */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Modal Content Box */
+.modal-content {
+    background: white;
+    padding: 32px;
+    border-radius: 24px;
+    max-width: 450px;
+    width: 90%;
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+}
+
+/* Status Icon di Modal */
+.status-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px;
+    font-size: 24px;
+}
+
+.status-success { background: #dcfce7; color: #166534; }
+.status-danger { background: #fee2e2; color: #991b1b; }
