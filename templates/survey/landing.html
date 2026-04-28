@@ -72,7 +72,31 @@
     border-radius: 12px;
 }
 
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.2rem;
+        letter-spacing: -0.5px;
+        margin-bottom: 16px;
+    }
+    .hero-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 30px;
+    }
+    .hero-btn {
+        width: 100%;
+        max-width: 280px;
+        padding: 14px 20px;
+        font-size: 1rem;
+    }
+    .hero-content {
+        padding: 0 24px;
+        height: auto;
+        min-height: calc(100vh - 70px);
+        justify-content: center;
+    }
 }
+
+
 {% endblock %}
 
 {% block content %}

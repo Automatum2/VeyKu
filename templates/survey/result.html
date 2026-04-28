@@ -132,6 +132,33 @@
     background: #F8FAFC;
     transform: translateY(-2px);
 }
+
+@media (max-width: 768px) {
+    .winner-value {
+        font-size: 2.2rem; /* Kecilkan agar tidak kepotong */
+    }
+    .winner-card {
+        padding: 25px 20px;
+    }
+    .result-title {
+        font-size: 1.8rem;
+    }
+    .action-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+    }
+    .btn-secondary {
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
+    .btn-primary {
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
+}
 {% endblock %}
 
 {% block content %}

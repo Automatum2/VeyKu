@@ -8,23 +8,6 @@ body {
     color: #ffffff;
 }
 
-.navbar-brand {
-    color: #ffffff;
-}
-
-.nav-link {
-    color: #a0a0a0;
-}
-
-.nav-link:hover {
-    color: #ffffff;
-}
-
-.nav-icon {
-    border-color: #333333;
-    color: #ffffff;
-}
-
 .about-container {
     max-width: 1200px;
     margin: 40px auto;
@@ -45,7 +28,7 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
-    min-height: 600px;
+    min-height: 800px; /* Ditambah agar box tidak menumpuk secara vertikal */
 }
 
 .center-image {
@@ -74,33 +57,40 @@ body {
     padding: 24px 30px;
     border-radius: 30px;
     width: 380px;
+    max-width: 30%; /* Tambahkan ini agar tidak menabrak gambar di laptop */
     text-align: left;
     position: absolute;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     z-index: 20;
+    transition: all 0.3s ease;
+}
+
+.info-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
 }
 
 /* Atur posisi untuk masing-masing box */
 .box-cerita {
-    top: 10%;
+    top: 15%;
     left: 0;
     border-bottom-right-radius: 5px;
 }
 
 .box-harapan {
-    bottom: 15%;
+    bottom: 10%;
     left: 0;
     border-top-right-radius: 5px;
 }
 
 .box-visi {
-    top: 5%;
+    top: 25%;
     right: 0;
     border-bottom-left-radius: 5px;
 }
 
 .box-kenapa {
-    bottom: 25%;
+    bottom: 10%;
     right: 0;
     border-top-left-radius: 5px;
 }
@@ -124,27 +114,43 @@ body {
     font-weight: 500;
 }
 
-/* Responsiveness */
-@media (max-width: 1024px) {
+/* Fix untuk Mobile agar tidak tumpuk */
+@media (max-width: 768px) {
     .about-grid {
+        display: flex;
         flex-direction: column;
-        gap: 30px;
+        align-items: center;
+        gap: 20px;
+        min-height: auto;
+        padding-top: 20px;
     }
     
     .info-box {
-        position: relative;
-        width: 100%;
-        max-width: 500px;
+        position: relative !important;
+        width: 100% !important;
+        max-width: 100% !important;
         top: auto !important;
         left: auto !important;
         right: auto !important;
         bottom: auto !important;
+        margin-bottom: 10px;
         border-radius: 20px !important;
     }
     
-    .center-image, .center-image-fallback {
+    .center-image {
         order: -1;
+        width: 80% !important;
+        max-width: 300px;
         margin-bottom: 20px;
+    }
+    
+    .center-image-fallback {
+        display: none;
+    }
+    
+    .about-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
     }
 }
 {% endblock %}
@@ -157,7 +163,7 @@ body {
         
         <!-- Gambar Tengah -->
         <!-- Ganti src dengan gambar model aslinya nanti -->
-        <img src="https://i.ibb.co.com/8ndFndN/asian-student.png" alt="Student Model" class="center-image" onerror="this.style.display='none'">
+        <img src="{{ url_for('static', filename='foto/orang_kacamata.png') }}" alt="Student Model" class="center-image" onerror="this.style.display='none'">
         <div class="center-image-fallback"></div>
 
         <!-- Box Kiri Atas: Cerita -->

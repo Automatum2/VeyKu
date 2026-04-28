@@ -1,0 +1,326 @@
+/* Hero Section */
+.hero-section {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(180deg, #ffffff 0%, #f0f4ff 100%);
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+.hero-title span {
+    color: var(--primary-blue);
+}
+
+/* Button Global */
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 12px 32px;
+    border-radius: var(--rounded-full);
+    text-decoration: none;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+}
+
+/* Question Cards (Halaman Pertanyaan) */
+.question-container {
+    max-width: 700px;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: var(--rounded-lg);
+    box-shadow: var(--card-shadow);
+}
+
+.option-item {
+    border: 2px solid #e2e8f0;
+    border-radius: var(--rounded-lg);
+    padding: 15px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.option-item:hover {
+    border-color: var(--primary-blue);
+    background-color: #eff6ff;
+}
+
+.option-item.active {
+    border-color: var(--primary-blue);
+    background-color: #eff6ff;
+    box-shadow: 0 0 0 2px var(--primary-blue);
+}
+
+/* Form Pendaftaran */
+.form-registration {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+/* Progress Bar */
+.progress-container {
+    width: 100%;
+    background-color: #e2e8f0;
+    height: 8px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--primary-blue);
+    border-radius: 10px;
+    transition: width 0.4s ease;
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-sm);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary-blue);
+    text-decoration: none;
+    letter-spacing: -1px;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+    .navbar-nav {
+        gap: 16px;
+    }
+    .nav-link {
+        font-size: 0.85rem;
+    }
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #4a5568;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-blue);
+}
+
+.nav-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    color: #4a5568;
+    transition: all 0.3s ease;
+}
+
+.nav-icon:hover {
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+    transform: translateY(-2px);
+    background: white;
+}
+
+.nav-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Custom Radio Button */
+.option-item input[type="radio"] {
+    display: none;
+}
+
+.radio-custom {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #cbd5e1;
+    border-radius: 50%;
+    margin-right: 15px;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.option-item.active .radio-custom {
+    border-color: var(--primary-blue);
+    background: var(--primary-blue);
+}
+
+.option-item.active .radio-custom::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Responsiveness & Layout Fixes for About Page */
+@media (max-width: 1200px) {
+    .about-grid {
+        min-height: 800px;
+    }
+    .info-box {
+        width: 320px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .about-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        min-height: auto;
+        padding-bottom: 40px;
+    }
+    
+    .info-box {
+        position: relative;
+        width: 100% !important;
+        max-width: 500px;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        border-radius: 20px !important;
+        margin: 0 auto;
+    }
+    
+    .center-image, .center-image-fallback {
+        order: -1;
+        position: relative;
+        left: auto !important;
+        transform: none !important;
+        margin: 0 auto 20px auto;
+        display: block;
+    }
+}
+
+/* Thank You Page & Glassmorphism */
+.thankyou-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    background: var(--grad-bg);
+    min-height: 80vh;
+}
+
+.thankyou-card {
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    padding: 60px 40px;
+}
+
+.thankyou-emoji {
+    font-size: 5rem;
+    margin-bottom: 30px;
+}
+
+.stat-bar {
+    margin-bottom: 24px;
+    text-align: left;
+}
+
+.stat-bar-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+.stat-bar-track {
+    height: 12px;
+    background: #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.stat-bar-fill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stat-bar-fill.kerja { background: var(--primary-blue); }
+.stat-bar-fill.kuliah { background: #10b981; }
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 32px;
+    box-shadow: var(--shadow-lg);
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
