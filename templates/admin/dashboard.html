@@ -1,132 +1,94 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VEYKU Admin Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/variables.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
-</head>
-<body>
+{% extends "layout/base_admin.html" %}
 
-    <nav class="navbar">
-        <h2>VEYKU <span>Admin</span></h2>
-        <div>
-            <span style="margin-right: 20px; font-weight: 500;">Halo, {{ admin_name }}</span>
-            <a href="{{ url_for('auth.logout') }}" class="logout-btn">Logout</a>
+{% block title %}Admin Dashboard - VEYKU{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="welcome-text">Ringkasan Data Pendaftar</div>
+    
+    <div class="stats-grid">
+        <div class="stat-card primary">
+            <div class="stat-title">Total Peserta</div>
+            <div class="stat-number">{{ total_responden }}</div>
         </div>
-    </nav>
-
-    <div class="dashboard-container">
-        <div class="welcome-text">Ringkasan Data Pendaftar</div>
-        
-        <div class="stats-grid">
-            <div class="stat-card primary">
-                <div class="stat-title">Total Peserta</div>
-                <div class="stat-number">{{ total_responden }}</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-title">Teknik & IT</div>
-                <div class="stat-number">{{ t_teknik }}</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-title">Sains & Medis</div>
-                <div class="stat-number">{{ t_medis }}</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-title">Bisnis & Mgmt</div>
-                <div class="stat-number">{{ t_bisnis }}</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-title">Seni & Desain</div>
-                <div class="stat-number">{{ t_seni }}</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-title">Sosial & Humaniora</div>
-                <div class="stat-number">{{ t_soshum }}</div>
-            </div>
+        <div class="stat-card">
+            <div class="stat-title">Teknik & IT</div>
+            <div class="stat-number">{{ t_teknik }}</div>
         </div>
-
-        <div class="chart-container">
-            <canvas id="myChart"></canvas>
+        <div class="stat-card">
+            <div class="stat-title">Sains & Medis</div>
+            <div class="stat-number">{{ t_medis }}</div>
         </div>
-
-        <div class="table-container">
-            <div class="table-header">
-                <h3>Kelola Data Peserta</h3>
-                <a href="{{ url_for('admin.responden_list') }}" class="btn-view-all">Lihat Tabel Lengkap →</a>
-            </div>
-            <p style="color: var(--text-light);">Di tabel lengkap, Anda bisa melihat detail skor per rumpun, nama asal sekolah, email, dan mendownload datanya untuk keperluan BK.</p>
+        <div class="stat-card">
+            <div class="stat-title">Bisnis & Mgmt</div>
+            <div class="stat-number">{{ t_bisnis }}</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-title">Seni & Desain</div>
+            <div class="stat-number">{{ t_seni }}</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-title">Sosial & Humaniora</div>
+            <div class="stat-number">{{ t_soshum }}</div>
         </div>
     </div>
 
-    <script>
-        const ctx = document.getElementById('myChart');
-        Chart.register(ChartDataLabels);
-        
-        const total = {{ total_responden }};
+    <div class="chart-box">
+        <canvas id="myChart"></canvas>
+    </div>
 
-        new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Teknik & IT', 'Sains & Medis', 'Bisnis & Manajemen', 'Seni & Desain', 'Sosial & Humaniora'],
-                datasets: [{
-                    data: [{{ t_teknik }}, {{ t_medis }}, {{ t_bisnis }}, {{ t_seni }}, {{ t_soshum }}],
-                    backgroundColor: [
-                        '#3B82F6', // Blue
-                        '#10B981', // Emerald
-                        '#F59E0B', // Amber
-                        '#EC4899', // Pink
-                        '#8B5CF6'  // Purple
-                    ],
-                    borderWidth: 0,
-                    hoverOffset: 15
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                cutout: '60%',
-                plugins: {
-                    legend: {
-                        position: 'right',
-                        labels: {
-                            padding: 20,
-                            font: { family: 'Inter', size: 14, weight: '600' },
-                            usePointStyle: true,
-                            pointStyle: 'circle'
-                        }
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                let label = context.label || '';
-                                let value = context.parsed;
-                                let percentage = total > 0 ? ((value / total) * 100).toFixed(1) : 0;
-                                return `${label}: ${value} Peserta (${percentage}%)`;
-                            }
-                        }
-                    },
-                    datalabels: {
-                        color: '#fff',
-                        font: {
-                            weight: 'bold',
-                            size: 14
-                        },
-                        formatter: (value, ctx) => {
-                            if (total === 0 || value === 0) return null;
-                            let percentage = ((value / total) * 100).toFixed(0) + '%';
-                            return percentage;
-                        },
-                        anchor: 'center',
-                        align: 'center'
+    <div class="table-container">
+        <div class="table-header">
+            <h3>Kelola Data Peserta</h3>
+            <a href="{{ url_for('admin.responden_list') }}" class="btn-view-all">Lihat Tabel Lengkap →</a>
+        </div>
+        <p class="table-helper-text">Di tabel lengkap, Anda bisa melihat detail skor per rumpun, nama asal sekolah, email, dan mendownload datanya untuk keperluan BK.</p>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+<script>
+    const ctx = document.getElementById('myChart');
+    Chart.register(ChartDataLabels);
+    
+    const total = {{ total_responden }};
+
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Teknik & IT', 'Sains & Medis', 'Bisnis & Manajemen', 'Seni & Desain', 'Sosial & Humaniora'],
+            datasets: [{
+                data: [{{ t_teknik }}, {{ t_medis }}, {{ t_bisnis }}, {{ t_seni }}, {{ t_soshum }}],
+                backgroundColor: ['#3B82F6', '#10B981', '#F59E0B', '#EC4899', '#8B5CF6'],
+                borderWidth: 0,
+                hoverOffset: 15
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '60%',
+            plugins: {
+                legend: {
+                    position: 'right',
+                    labels: {
+                        padding: 20,
+                        font: { family: 'Inter', size: 14, weight: '600' },
+                        usePointStyle: true,
+                        pointStyle: 'circle'
+                    }
+                },
+                datalabels: {
+                    color: '#fff',
+                    font: { weight: 'bold', size: 14 },
+                    formatter: (value) => {
+                        if (total === 0 || value === 0) return null;
+                        return ((value / total) * 100).toFixed(0) + '%';
                     }
                 }
             }
-        });
-    </script>
-</body>
-</html>
+        }
+    });
+</script>
+{% endblock %}

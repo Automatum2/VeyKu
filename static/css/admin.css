@@ -398,3 +398,134 @@ tbody tr:hover {
 
 .status-success { background: #dcfce7; color: #166534; }
 .status-danger { background: #fee2e2; color: #991b1b; }
+
+/* Statistik Global Page */
+.stats-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.card-mini-stats {
+    background: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: var(--rounded-lg);
+    border-bottom: 4px solid var(--primary-blue);
+    box-shadow: var(--shadow-sm);
+}
+
+.card-mini-stats .label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+}
+
+.card-mini-stats .number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.chart-main-box {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    height: 400px; /* Atur tinggi chart di sini */
+    width: 100%;
+}
+
+.chart-title {
+    margin-bottom: 30px;
+    font-weight: 800;
+    text-align: center;
+    color: var(--text-dark);
+}
+
+/* Dashboard Admin Helper Classes */
+.nav-user-info {
+    margin-right: 20px;
+    font-weight: 500;
+}
+
+.table-helper-text {
+    color: var(--text-light);
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+/* Memastikan Chart Responsif */
+.chart-box {
+    position: relative;
+    height: 350px;
+    width: 100%;
+    background: white;
+    padding: 20px;
+    border-radius: var(--rounded-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Respondent Detail Helpers */
+.font-mono-large {
+    font-family: monospace;
+    font-size: 1.1rem;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.card-split {
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 40px; 
+    align-items: center;
+}
+
+.title-clean {
+    border-bottom: none; 
+    margin-bottom: 20px;
+}
+
+.data-item-spaced {
+    margin-bottom: 15px;
+}
+
+/* Category Colors */
+.text-teknik { color: #3B82F6; }
+.text-medis { color: #10B981; }
+.text-bisnis { color: #F59E0B; }
+.text-seni { color: #EC4899; }
+.text-soshum { color: #8B5CF6; }
+
+.chart-wrapper {
+    height: 300px;
+    width: 100%;
+}
+
+/* Table Page Helpers */
+.header-title {
+    margin: 0 0 10px 0;
+}
+
+.header-subtitle {
+    margin: 0;
+    color: var(--text-light);
+}
+
+.text-semibold {
+    font-weight: 600;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    color: var(--text-light);
+}

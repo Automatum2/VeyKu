@@ -3,201 +3,48 @@
 {% block title %}MajorMind - Tentang Kami{% endblock %}
 
 {% block extra_css %}
-body {
-    background-color: #000000;
-    color: #ffffff;
-}
-
-.about-container {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-    position: relative;
-    text-align: center;
-}
-
-.about-title {
-    font-size: 3.5rem;
-    font-weight: 800;
-    margin-bottom: 60px;
-    letter-spacing: 2px;
-}
-
-.about-grid {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    min-height: 800px; /* Ditambah agar box tidak menumpuk secara vertikal */
-}
-
-.center-image {
-    width: 350px;
-    height: auto;
-    z-index: 10;
-    position: relative;
-}
-
-/* Fallback gradient if image not loading */
-.center-image-fallback {
-    width: 350px;
-    height: 500px;
-    background: linear-gradient(to top, rgba(0,0,0,1), rgba(59,56,246,0.3));
-    border-radius: 200px 200px 0 0;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 5;
-}
-
-.info-box {
-    background: #ffffff;
-    color: #000000;
-    padding: 24px 30px;
-    border-radius: 30px;
-    width: 380px;
-    max-width: 30%; /* Tambahkan ini agar tidak menabrak gambar di laptop */
-    text-align: left;
-    position: absolute;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    z-index: 20;
-    transition: all 0.3s ease;
-}
-
-.info-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
-}
-
-/* Atur posisi untuk masing-masing box */
-.box-cerita {
-    top: 15%;
-    left: 0;
-    border-bottom-right-radius: 5px;
-}
-
-.box-harapan {
-    bottom: 10%;
-    left: 0;
-    border-top-right-radius: 5px;
-}
-
-.box-visi {
-    top: 25%;
-    right: 0;
-    border-bottom-left-radius: 5px;
-}
-
-.box-kenapa {
-    bottom: 10%;
-    right: 0;
-    border-top-left-radius: 5px;
-}
-
-.info-title {
-    font-size: 1.4rem;
-    font-weight: 800;
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.text-blue {
-    color: var(--primary-blue);
-}
-
-.info-text {
-    font-size: 0.85rem;
-    line-height: 1.6;
-    font-weight: 500;
-}
-
-/* Fix untuk Mobile agar tidak tumpuk */
-@media (max-width: 768px) {
-    .about-grid {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        min-height: auto;
-        padding-top: 20px;
-    }
-    
-    .info-box {
-        position: relative !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        top: auto !important;
-        left: auto !important;
-        right: auto !important;
-        bottom: auto !important;
-        margin-bottom: 10px;
-        border-radius: 20px !important;
-    }
-    
-    .center-image {
-        order: -1;
-        width: 80% !important;
-        max-width: 300px;
-        margin-bottom: 20px;
-    }
-    
-    .center-image-fallback {
-        display: none;
-    }
-    
-    .about-title {
-        font-size: 2rem;
-        margin-bottom: 30px;
-    }
-}
+/* CSS sudah dipindahkan ke static/css/survey.css */
 {% endblock %}
 
 {% block content %}
-<div class="about-container">
-    <h1 class="about-title">TENTANG KAMI</h1>
-    
-    <div class="about-grid">
+<div class="about-page-body"> <div class="about-container">
+        <h1 class="about-title">TENTANG KAMI</h1>
         
-        <!-- Gambar Tengah -->
-        <!-- Ganti src dengan gambar model aslinya nanti -->
-        <img src="{{ url_for('static', filename='foto/orang_kacamata.png') }}" alt="Student Model" class="center-image" onerror="this.style.display='none'">
-        <div class="center-image-fallback"></div>
+        <div class="about-grid">
+            <img src="{{ url_for('static', filename='foto/orang_kacamata.png') }}" 
+                 alt="Student Model" 
+                 class="center-image" 
+                 onerror="this.style.display='none'">
+            <div class="center-image-fallback"></div>
 
-        <!-- Box Kiri Atas: Cerita -->
-        <div class="info-box box-cerita">
-            <div class="info-title">Cerita di Balik <span class="text-blue">VEYKU</span></div>
-            <div class="info-text">
-                VEYKU lahir dari keresahan yang nyata. Sebagai sesama pelajar yang juga pernah berada di persimpangan jalan—menentukan apakah harus lanjut kuliah atau berkarier—saya menyadari bahwa banyak dari kita seringkali membuat keputusan besar hanya berdasarkan "katanya". VEYKU dikembangkan sebagai proyek independen untuk membantu teman-teman seangkatan agar bisa mengambil keputusan berdasarkan pemahaman diri yang lebih baik.
+            <div class="info-box box-cerita">
+                <div class="info-title">Cerita di Balik <span class="text-blue">VEYKU</span></div>
+                <div class="info-text">
+                    VEYKU lahir dari keresahan yang nyata. Sebagai sesama pelajar yang juga pernah berada di persimpangan jalan—menentukan apakah harus lanjut kuliah atau berkarier—saya menyadari bahwa banyak dari kita seringkali membuat keputusan besar hanya berdasarkan "katanya". VEYKU dikembangkan sebagai proyek independen untuk membantu teman-teman seangkatan agar bisa mengambil keputusan berdasarkan pemahaman diri yang lebih baik.
+                </div>
+            </div>
+
+            <div class="info-box box-harapan">
+                <div class="info-title">Harapan Kami</div>
+                <div class="info-text">
+                    Kami berharap VEYKU tidak hanya menjadi sekadar website pengumpul data, tetapi menjadi alat bantu yang memberikan ketenangan bagi setiap siswa. Jika melalui VEYKU satu saja orang terbantu untuk menemukan jurusan impiannya, maka tujuan besar kami telah tercapai.
+                </div>
+            </div>
+
+            <div class="info-box box-visi">
+                <div class="info-title">VISI MISI</div>
+                <div class="info-text">
+                    Menjadi jembatan digital yang inklusif bagi setiap siswa SMA/SMK di Indonesia dalam menemukan jalur pendidikan yang tepat. Kami percaya bahwa pilihan jurusan yang tepat adalah langkah awal bagi kesuksesan karier di masa depan.
+                </div>
+            </div>
+
+            <div class="info-box box-kenapa">
+                <div class="info-title">Kenapa <span class="text-blue">VEYKU</span>?</div>
+                <div class="info-text">
+                    Kami hadir untuk menghapus rasa cemas akibat "salah jurusan". Dengan pendekatan berbasis data yang intuitif, VEYKU menggabungkan kemudahan akses dengan hasil yang relevan. Kami merancang alur survey agar tidak membosankan, sehingga kamu bisa mendapatkan insight mendalam tanpa drama.
+                </div>
             </div>
         </div>
-
-        <!-- Box Kiri Bawah: Harapan -->
-        <div class="info-box box-harapan">
-            <div class="info-title">Harapan Kami</div>
-            <div class="info-text">
-                Kami berharap VEYKU tidak hanya menjadi sekadar website pengumpul data, tetapi menjadi alat bantu yang memberikan ketenangan bagi setiap siswa. Jika melalui VEYKU satu saja orang terbantu untuk menemukan jurusan impiannya, maka tujuan besar kami telah tercapai.
-            </div>
-        </div>
-
-        <!-- Box Kanan Atas: Visi Misi -->
-        <div class="info-box box-visi">
-            <div class="info-title">VISI MISI</div>
-            <div class="info-text">
-                Menjadi jembatan digital yang inklusif bagi setiap siswa SMA/SMK di Indonesia dalam menemukan jalur pendidikan yang tepat. Kami percaya bahwa pilihan jurusan yang tepat adalah langkah awal bagi kesuksesan karier di masa depan.
-            </div>
-        </div>
-
-        <!-- Box Kanan Bawah: Kenapa Veyku -->
-        <div class="info-box box-kenapa">
-            <div class="info-title">Kenapa <span class="text-blue">VEYKU</span>?</div>
-            <div class="info-text">
-                Kami hadir untuk menghapus rasa cemas akibat "salah jurusan". Dengan pendekatan berbasis data yang intuitif, VEYKU menggabungkan kemudahan akses dengan hasil yang relevan. Kami merancang alur survey agar tidak membosankan, sehingga kamu bisa mendapatkan insight mendalam tanpa drama.
-            </div>
-        </div>
-
     </div>
 </div>
 {% endblock %}

@@ -1,96 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VEYKU Admin - Data Peserta</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/variables.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
-    
-</head>
-<body>
+{% extends "layout/base_admin.html" %}
 
-    <nav class="navbar">
-        <h2>VEYKU <span>Admin</span></h2>
+{% block title %}Data Peserta - VEYKU Admin{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="header-actions">
         <div>
-            <a href="{{ url_for('admin.dashboard') }}" class="btn-ghost">Kembali ke Dashboard</a>
-        </div>
-    </nav>
-
-    <div class="container">
-        <div class="header-actions">
-            <div>
-                <h1 style="margin: 0 0 10px 0;">Tabel Data Peserta</h1>
-                <p style="margin: 0; color: var(--text-light);">Kelola seluruh data pendaftar yang telah menyelesaikan tes.</p>
-            </div>
-        </div>
-
-        <div class="table-card">
-            <table>
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>NIS</th>
-                        <th>Nama Peserta</th>
-                        <th>Jurusan SMK</th>
-                        <th>Email</th>
-                        <th>Rekomendasi</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for r in pagination.items %}
-                    <tr>
-                        <td>{{ loop.index + (pagination.page - 1) * pagination.per_page }}</td>
-                        <td>{{ r.nis }}</td>
-                        <td style="font-weight: 600;">{{ r.nama }}</td>
-                        <td>{{ r.jurusan_smk }}</td>
-                        <td>{{ r.email }}</td>
-                        <td>
-                            {% if r.survey_response %}
-                            <span class="badge">{{ r.survey_response.hasil_rekomendasi }}</span>
-                            {% else %}
-                            -
-                            {% endif %}
-                        </td>
-                        <td>
-                            <a href="{{ url_for('admin.responden_detail', id=r.id) }}" class="btn-primary">Detail Profil</a>
-                        </td>
-                    </tr>
-                    {% else %}
-                    <tr>
-                        <td colspan="6" style="text-align: center; color: var(--text-light);">Belum ada peserta yang menyelesaikan tes.</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-
-            {% if pagination.pages > 1 %}
-            <div class="pagination">
-                {% if pagination.has_prev %}
-                <a href="{{ url_for('admin.responden_list', page=pagination.prev_num) }}">← Prev</a>
-                {% endif %}
-                
-                {% for p in pagination.iter_pages() %}
-                    {% if p %}
-                        {% if p == pagination.page %}
-                        <span class="active">{{ p }}</span>
-                        {% else %}
-                        <a href="{{ url_for('admin.responden_list', page=p) }}">{{ p }}</a>
-                        {% endif %}
-                    {% else %}
-                    <span>...</span>
-                    {% endif %}
-                {% endfor %}
-                
-                {% if pagination.has_next %}
-                <a href="{{ url_for('admin.responden_list', page=pagination.next_num) }}">Next →</a>
-                {% endif %}
-            </div>
-            {% endif %}
+            <h1 class="header-title">Tabel Data Peserta</h1>
+            <p class="header-subtitle">Kelola seluruh data pendaftar yang telah menyelesaikan tes.</p>
         </div>
     </div>
 
-</body>
-</html>
+    <div class="table-card">
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>NIS</th>
+                    <th>Nama Peserta</th>
+                    <th>Jurusan SMK</th>
+                    <th>Email</th>
+                    <th>Rekomendasi</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in pagination.items %}
+                <tr>
+                    <td>{{ loop.index + (pagination.page - 1) * pagination.per_page }}</td>
+                    <td>{{ r.nis }}</td>
+                    <td class="text-semibold">{{ r.nama }}</td>
+                    <td>{{ r.jurusan_smk }}</td>
+                    <td>{{ r.email }}</td>
+                    <td>
+                        {% if r.survey_response %}
+                        <span class="badge">{{ r.survey_response.hasil_rekomendasi }}</span>
+                        {% else %}
+                        -
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{{ url_for('admin.responden_detail', id=r.id) }}" class="btn-primary">Detail Profil</a>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="7" class="text-center text-muted">Belum ada peserta yang menyelesaikan tes.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% if pagination.pages > 1 %}
+        <div class="pagination">
+            {% if pagination.has_prev %}
+            <a href="{{ url_for('admin.responden_list', page=pagination.prev_num) }}">← Prev</a>
+            {% endif %}
+            
+            {% for p in pagination.iter_pages() %}
+                {% if p %}
+                    {% if p == pagination.page %}
+                    <span class="active">{{ p }}</span>
+                    {% else %}
+                    <a href="{{ url_for('admin.responden_list', page=p) }}">{{ p }}</a>
+                    {% endif %}
+                {% else %}
+                <span>...</span>
+                {% endif %}
+            {% endfor %}
+            
+            {% if pagination.has_next %}
+            <a href="{{ url_for('admin.responden_list', page=pagination.next_num) }}">Next →</a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
