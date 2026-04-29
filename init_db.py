@@ -16,12 +16,12 @@ def init_db():
         admin = User.query.filter_by(email='jayajeje63@gmail.com').first()
         if not admin:
             print("Membuat akun admin default...")
-            admin = User(name='AdminJMK', email='jayajeje63@gmail.com', role='admin')
+            admin = User(name='AdminJMK', email='[EMAIL_ADDRESS]', role='admin')
             admin.set_password('543643')
             db.session.add(admin)
             db.session.commit()
             print("Akun admin berhasil dibuat!")
-            print("Email: jayajeje63@gmail.com")
+            print("Email: [EMAIL_ADDRESS]")
             print("Password: 543643")
         else:
             print("Akun admin sudah ada di database.")
