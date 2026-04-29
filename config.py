@@ -14,3 +14,4 @@ class Config:
                               'mysql+pymysql://root:@localhost/majormind_db'
     
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    
