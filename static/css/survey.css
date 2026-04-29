@@ -1262,3 +1262,68 @@
         font-size: 1.4rem !important;
     }
 }
+
+/* LOGIN PAGE STYLES (login.html) */
+.login-wrapper {
+    min-height: 80vh; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 20px;
+}
+
+.login-card {
+    width: 100%; 
+    max-width: 440px; 
+    padding: 40px 30px; 
+    border-radius: 20px; 
+    box-sizing: border-box;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-logo {
+    width: 80px; /* Sesuaikan ukuran logo */
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.login-title {
+    font-size: 1.8rem; 
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.login-subtitle {
+    font-size: 0.95rem; 
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.form-label-bold {
+    display: block; 
+    margin-bottom: 8px; 
+    font-weight: 600;
+}
+
+.input-full {
+    width: 100%; 
+    box-sizing: border-box; 
+    padding: 12px 15px;
+}
+
+.btn-login {
+    width: 100%; 
+    padding: 14px; 
+    font-size: 1.1rem; 
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.footer-link {
+    margin-top: 30px; 
+    text-align: center;
+}
