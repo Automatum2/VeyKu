@@ -3,32 +3,13 @@
 {% block title %}VEYKU - Tentukan Jurusan Kuliahmu{% endblock %}
 
 {% block extra_css %}
-<style>
-    /* Styling tambahan untuk gambar hero agar pas di tengah */
-    .hero-img-wrapper {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 1.5rem;
-    }
-    
-    .hero-img-top {
-        width: 100%;
-        max-width: 250px; /* Sesuaikan ukuran gambar di sini */
-        height: auto;
-        border-radius: 20px;
-        object-fit: cover;
-    }
-</style>
+/* CSS sudah dipindahkan ke static/css/survey.css */
 {% endblock %}
 
 {% block content %}
 <div class="landing-wrapper"></div>
 
 <div class="hero-content fade-in-scale">
-    <div class="hero-img-wrapper">
-        <img src="/static/foto/cewe pajangan.png" alt="Veyku Illustration" class="hero-img-top">
-    </div>
-
     <h1 class="hero-title-landing">Pilih Jurusan Gak Pake Pusing cek di <span>VEYKU</span> aJa</h1>
     <p class="hero-subtitle-landing">
         Platform tes minat bakat modern untuk memetakan potensimu ke dalam 5 rumpun jurusan kuliah yang paling tepat.
@@ -76,6 +57,7 @@
             <h3>Lihat Hasil</h3>
             <p>Dapatkan persentase kecocokanmu dengan 5 rumpun jurusan dan rekomendasi program studi spesifik.</p>
         </div>
+
     </div>
 </div>
 {% endblock %}

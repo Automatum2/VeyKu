@@ -12,19 +12,10 @@
     <p class="register-subtitle">Lengkapi data diri kamu sebelum memulai tes.</p>
 
     <form method="POST" action="{{ url_for('survey.data_diri') }}">
-       <div class="form-group-minimal">
-    <label class="form-label-minimal">NIS (NOMOR INDUK SISWA)</label>
-    <input 
-        type="text" 
-        name="nis" 
-        class="form-control-underline" 
-        placeholder="Masukkan 5 digit NIS kamu" 
-        required
-        pattern="\d{5}" 
-        maxlength="5"
-        title="NIS harus berupa 5 digit angka"
-        oninput="this.value = this.value.replace(/[^0-9]/g, '');">
-</div>
+        <div class="form-group-minimal">
+            <label class="form-label-minimal">NIS (NOMOR INDUK SISWA)</label>
+            <input type="text" name="nis" class="form-control-underline" placeholder="Masukkan NIS kamu" required>
+        </div>
 
         <div class="form-group-minimal">
             <label class="form-label-minimal">NAMA LENGKAP</label>
