@@ -19,6 +19,12 @@
 </head>
 <body class="{% block body_class %}{% endblock %}">
     <script>
+        // Memaksa halaman selalu mulai dari paling atas saat di-refresh (Scroll Restoration Fix)
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+
         // Set tema awal sebelum halaman dirender untuk mencegah flash of unstyled content
         const savedTheme = localStorage.getItem('veyku-theme');
         if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {

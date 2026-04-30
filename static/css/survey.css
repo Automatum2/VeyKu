@@ -136,7 +136,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    margin: 20px auto 0;
+    margin: 10px auto 0;
     max-width: 1100px;
     background: transparent; /* Transparan secara default */
     position: sticky;
@@ -390,16 +390,16 @@
 
 .about-container {
     max-width: 1200px;
-    margin: 40px auto;
+    margin: 10px auto;
     padding: 0 20px;
     position: relative;
     text-align: center;
 }
 
 .about-title {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     font-weight: 800;
-    margin-bottom: 60px;
+    margin-bottom: 20px;
     letter-spacing: 2px;
     color: var(--white);
 }
@@ -438,7 +438,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    min-height: 800px;
+    min-height: 550px;
 }
 
 .hero-image-wrapper {
@@ -450,15 +450,15 @@
 }
 
 .center-image {
-    width: 350px;
+    width: 280px;
     height: auto;
     position: relative;
     z-index: 10;
 }
 
 .center-image-fallback {
-    width: 350px;
-    height: 350px;
+    width: 280px;
+    height: 280px;
     background: linear-gradient(to top, rgba(0,0,0,1), rgba(59,56,246,0.3));
     border-radius: 50%;
     position: absolute;
@@ -472,10 +472,10 @@
 .info-box {
     background: #ffffff;
     color: #000000;
-    padding: 24px 30px;
-    border-radius: 30px;
-    width: 380px;
-    max-width: 30%;
+    padding: 18px 24px;
+    border-radius: 24px;
+    width: 340px;
+    max-width: 32%;
     text-align: left;
     position: absolute;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
@@ -488,10 +488,10 @@
     box-shadow: 0 15px 40px rgba(0,0,0,0.6);
 }
 
-.box-cerita { top: 15%; left: 0; border-bottom-right-radius: 5px; }
-.box-harapan { bottom: 10%; left: 0; border-top-right-radius: 5px; }
-.box-visi { top: 25%; right: 0; border-bottom-left-radius: 5px; }
-.box-kenapa { bottom: 10%; right: 0; border-top-left-radius: 5px; }
+.box-cerita { top: 0; left: 0; border-bottom-right-radius: 5px; }
+.box-harapan { bottom: 0; left: 0; border-top-right-radius: 5px; }
+.box-visi { top: 5%; right: 0; border-bottom-left-radius: 5px; }
+.box-kenapa { bottom: 0; right: 0; border-top-left-radius: 5px; }
 
 .info-title {
     font-size: 1.4rem;
@@ -503,9 +503,14 @@
 }
 
 .info-text {
-    font-size: 0.85rem;
-    line-height: 1.6;
+    font-size: 0.8rem;
+    line-height: 1.5;
     font-weight: 500;
+}
+
+.info-text strong {
+    color: var(--primary-blue);
+    font-weight: 700;
 }
 
 /* Responsive Mobile */
@@ -645,10 +650,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     text-align: center;
     min-height: calc(100vh - 80px);
-    padding: 80px 20px;
+    padding: 30px 20px;
     position: relative;
     z-index: 1;
 }
