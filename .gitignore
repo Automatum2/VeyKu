@@ -1,23 +1,8 @@
-# Python virtual environment
+__pycache__/
+*.pyc
 .venv/
 venv/
-ENV/
-env/
 .env
-
-# Python cache
-__pycache__/
-*.py[cod]
-*$py.class
-
-# Database lokal (SQLite)
-*.db
+veyku.db
 instance/
-
-# IDE files
-.vscode/
-.idea/
-
-# OS files
 .DS_Store
-Thumbs.db
