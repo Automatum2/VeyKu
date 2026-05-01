@@ -130,9 +130,7 @@
     transition: width 0.4s ease;
 }
 
-/* ==========================================
-   NAVBAR STYLES (Global, About, Mobile)
-   ========================================== */
+/* Navbar Styles (Floating & Glassmorphism) */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -141,6 +139,7 @@
     margin: 10px auto 0;
     max-width: 1100px;
     background: transparent;
+    /* Transparan secara default */
     position: sticky;
     top: 20px;
     z-index: 1000;
@@ -148,6 +147,7 @@
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* State ketika halaman di-scroll */
 .navbar.scrolled {
     background: var(--bg-glass);
     backdrop-filter: blur(16px);
@@ -163,9 +163,81 @@
     color: var(--primary-blue);
     text-decoration: none;
     letter-spacing: -1px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        margin: 10px 10px 0;
+        padding: 8px 12px;
+        top: 10px;
+        justify-content: center;
+        /* Rata tengah agar semua elemen berkumpul seimbang */
+        gap: 20px;
+        /* Jarak antara Logo Veyku dan kumpulan menu */
+        width: fit-content;
+        min-width: 92%;
+    }
+
+    .navbar.scrolled {
+        padding: 6px 12px;
+    }
+
+    .navbar-brand {
+        font-size: 0.95rem;
+        gap: 5px !important;
+        flex-shrink: 0;
+        margin: 0;
+    }
+
+    .navbar-brand img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .navbar-nav {
+        gap: 15px;
+        /* Jarak yang sama antar elemen (Survey, About, Icons) */
+        flex-shrink: 0;
+        justify-content: center;
+    }
+
+    .nav-link {
+        font-size: 0.72rem;
+        font-weight: 700;
+        padding: 4px 0;
+    }
+
+    .nav-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .nav-icon svg {
+        width: 15px;
+        height: 15px;
+    }
+}
+
+/* Penyesuaian Dark Mode untuk Ikon di Mobile */
+[data-theme="dark"] .nav-icon {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+@media (max-width: 380px) {
+    .navbar {
+        gap: 16px;
+        padding: 6px 10px;
+    }
+
+    .navbar-nav {
+        gap: 10px;
+    }
+
+    .navbar-brand {
+        font-size: 0.85rem;
+    }
 }
 
 .navbar-nav {
@@ -199,62 +271,16 @@
     transition: all 0.3s ease;
 }
 
+.nav-icon:hover {
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+    transform: translateY(-2px);
+    background: white;
+}
+
 .nav-icon svg {
     width: 20px;
     height: 20px;
-}
-
-/* Navbar Khusus Mobile (Responsive Terpadu) */
-@media (max-width: 768px) {
-    .navbar {
-        margin: 10px 10px 0;
-        padding: 8px 12px;
-        top: 10px;
-        justify-content: center;
-        gap: 15px;
-        width: fit-content;
-        min-width: 92%;
-    }
-
-    .navbar.scrolled {
-        padding: 6px 12px;
-    }
-
-    .navbar-brand {
-        font-size: 0.95rem;
-        gap: 5px !important;
-        margin: 0;
-    }
-
-    .navbar-brand img {
-        width: 20px;
-        height: 20px;
-    }
-
-    .navbar-nav {
-        gap: 15px;
-    }
-
-    .nav-link {
-        font-size: 0.72rem;
-        padding: 4px 0;
-    }
-
-    .nav-icon {
-        width: 32px;
-        height: 32px;
-    }
-
-    .nav-icon svg {
-        width: 15px;
-        height: 15px;
-    }
-}
-
-@media (max-width: 380px) {
-    .navbar { gap: 10px; padding: 6px 10px; }
-    .navbar-nav { gap: 8px; }
-    .navbar-brand { font-size: 0.85rem; }
 }
 
 /* Custom Radio Button */
@@ -836,78 +862,626 @@
     line-height: 1.5;
 }
 
-/* ==========================================
-   MOBILE RESPONSIVENESS (TERPADU)
-   ========================================== */
+/* Responsive */
 @media (max-width: 1024px) {
-    .steps-grid { grid-template-columns: repeat(2, 1fr); }
+    .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
-    /* Hero & Landing */
-    .hero-title-landing { font-size: 2.2rem; letter-spacing: -0.5px; }
-    .hero-subtitle-landing { font-size: 0.95rem; }
-    .hero-btn-large { width: 100%; max-width: 280px; }
-    .steps-grid { grid-template-columns: 1fr; }
-    .section-title-steps { font-size: 1.8rem; }
+    .hero-title-landing {
+        font-size: 2.2rem;
+        letter-spacing: -0.5px;
+    }
 
-    /* Containers & Cards */
+    .hero-subtitle-landing {
+        font-size: 0.95rem;
+    }
+
+    .hero-btn-large {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title-steps {
+        font-size: 1.8rem;
+    }
+}
+
+/* ==========================================
+   QUESTIONS PAGE STYLES (questions.html)
+   ========================================== */
+.survey-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.progress-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.progress-bar-container {
+    height: 6px;
+    background: #E2E8F0;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: var(--primary-blue);
+    width: 0%;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.question-card {
+    display: none;
+    opacity: 0;
+}
+
+.question-card.active {
+    display: block;
+    opacity: 1;
+    /* Kita hapus fadeInUp dari sini, karena akan dihandle oleh class slide-in-right via JS */
+}
+
+.question-card.slide-out-left {
+    display: block;
+    /* Tetap block saat proses animasi keluar */
+}
+
+.question-title-text {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 30px;
+    line-height: 1.3;
+}
+
+.options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.option-item-btn {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 24px;
+    background: #FFFFFF;
+    border: 2px solid #F1F5F9;
+    border-radius: 16px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.option-item-btn:hover {
+    border-color: var(--primary-blue);
+    background: #FAFAFF;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.emoji-box {
+    font-size: 1.8rem;
+    background: #F8FAFC;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    transition: background 0.2s ease;
+}
+
+.option-item-btn:hover .emoji-box {
+    background: white;
+}
+
+.option-label-text {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+/* Loading Indicator */
+.loading-indicator-box {
+    display: none;
+    text-align: center;
+    margin-top: 50px;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.spinner-loader {
+    width: 48px;
+    height: 48px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--primary-blue);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ==========================================
+   MINI STATS CARD (Statistik Global)
+   ========================================== */
+.stats-grid-container {
+    display: flex;
+    justify-content: center;
+    margin: 30px auto 40px;
+    width: 100%;
+}
+
+.card-mini-stats {
+    background: #ffffff;
+    border-radius: var(--rounded-lg);
+    box-shadow: var(--shadow-md);
+    padding: 24px 40px;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-width: 250px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s;
+}
+
+.card-mini-stats:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card-mini-stats .icon-wrapper {
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--primary-blue);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+.card-mini-stats .label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.card-mini-stats .number {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--primary-blue);
+    line-height: 1;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #6D6BFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ==========================================
+   RESULT PAGE STYLES (result.html)
+   ========================================== */
+.result-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.result-header-box {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.result-main-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+.result-desc {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
+
+.winner-card-gradient {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #6D6BFF 100%);
+    border-radius: 24px;
+    padding: 40px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(59, 56, 246, 0.2);
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.winner-card-gradient::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+}
+
+.badge-status {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    font-weight: 800;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.badge-selaras {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10B981;
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+.badge-lintas {
+    background: rgba(245, 158, 11, 0.2);
+    color: #F59E0B;
+    border-color: rgba(245, 158, 11, 0.3);
+}
+
+.winner-value-text {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.prodi-tags-container {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 15px 20px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.tag-prodi {
+    background: white;
+    color: var(--primary-blue);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.stats-card-white {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 40px;
+}
+
+.stat-bar-outer {
+    width: 100%;
+    height: 12px;
+    background: #F1F5F9;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.stat-bar-inner {
+    height: 100%;
+    background: var(--primary-blue);
+    border-radius: 6px;
+    transition: width 1s ease-in-out;
+}
+
+.stat-bar-other {
+    background: #94A3B8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .winner-value-text {
+        font-size: 2.2rem;
+    }
+
+    .winner-card-gradient {
+        padding: 25px 20px;
+    }
+
+    .result-main-title {
+        font-size: 1.8rem;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+    }
+
+    .btn-secondary,
+    .btn-primary {
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
+}
+
+/* ==========================================
+   FLASH MESSAGES & ALERTS
+   ========================================== */
+.flash-messages {
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    translate: -50% 0;
+    /* Modern alternative to transform: translateX */
+    z-index: 9999;
+    width: 90%;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    pointer-events: none;
+    /* So it doesn't block clicks underneath if transparent */
+}
+
+.alert {
+    padding: 16px 24px;
+    border-radius: 16px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 15px 30px rgba(239, 68, 68, 0.2);
+    animation: fadeInDownAlert 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    pointer-events: auto;
+}
+
+.alert-error,
+.alert-danger {
+    background-color: #ef4444;
+    /* Merah sedikit terang */
+    color: #ffffff;
+    border: 1px solid #dc2626;
+}
+
+.alert-success {
+    background-color: #10b981;
+    color: #ffffff;
+    box-shadow: 0 15px 30px rgba(16, 185, 129, 0.2);
+    border: 1px solid #059669;
+}
+
+@keyframes fadeInDownAlert {
+    from {
+        opacity: 0;
+        translate: 0 -20px;
+    }
+
+    to {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
+/* ==========================================
+   DARK MODE COMPONENT OVERRIDES
+   ========================================== */
+[data-theme="dark"] .question-container,
+[data-theme="dark"] .stats-card-white,
+[data-theme="dark"] .info-box,
+[data-theme="dark"] .register-container,
+[data-theme="dark"] .option-item-btn,
+[data-theme="dark"] .card-mini-stats {
+    background: var(--bg-dark);
+    color: var(--text-main);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow-md);
+}
+
+[data-theme="dark"] .glass-card,
+[data-theme="dark"] .step-card {
+    background: rgba(15, 23, 42, 0.6);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-main);
+}
+
+[data-theme="dark"] .step-card:hover {
+    background: var(--bg-dark);
+}
+
+[data-theme="dark"] .nav-icon {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-main);
+}
+
+[data-theme="dark"] .option-item-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--primary-blue);
+}
+
+[data-theme="dark"] .emoji-box {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .option-item-btn:hover .emoji-box {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .option-label-text,
+[data-theme="dark"] .step-card h3,
+[data-theme="dark"] .hero-title-landing,
+[data-theme="dark"] .section-title-steps,
+[data-theme="dark"] .register-title,
+[data-theme="dark"] .result-main-title {
+    color: var(--text-main);
+}
+
+[data-theme="dark"] .form-control-underline,
+[data-theme="dark"] .form-input {
+    color: var(--text-main);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .form-control-underline option {
+    background: var(--bg-dark);
+    color: var(--text-main);
+}
+
+[data-theme="dark"] .stat-bar-outer {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ==========================================
+   MOBILE RESPONSIVENESS OVERRIDES (GLOBAL)
+   ========================================== */
+@media (max-width: 768px) {
+
+    /* Mengurangi padding agar layar HP tidak termakan ruang kosong */
     .question-container,
     .register-container,
     .result-container,
     .stats-card-white,
     .winner-card-gradient,
     .info-box,
-    .thankyou-card,
-    .login-card {
+    .thankyou-card {
         padding: 24px 16px !important;
         margin: 20px auto !important;
         width: 92% !important;
         box-sizing: border-box;
     }
 
-    /* Titles Scaling */
-    .hero-title, .register-title, .result-main-title, .chart-title, .about-title, .login-title {
-        font-size: 1.8rem !important;
+    /* Menurunkan ukuran judul besar agar tidak patah di layar kecil */
+    .hero-title,
+    .register-title,
+    .result-main-title,
+    .chart-title,
+    .about-title {
+        font-size: 2rem !important;
         line-height: 1.3 !important;
     }
 
-    .question-title-text { font-size: 1.4rem !important; }
-
-    /* Results Specific */
-    .winner-value-text { font-size: 2.2rem; }
-    .action-buttons { flex-direction: column; width: 100%; gap: 12px; }
-    .btn-secondary, .btn-primary { width: 100%; text-align: center; }
-
-    /* About Page Specific */
-    .about-grid {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        min-height: auto;
+    .about-container {
+        padding: 10px !important;
     }
-    .center-image { order: -1; width: 80% !important; max-width: 300px; margin-bottom: 20px; }
-    .center-image-fallback { display: none; }
-    .about-container { padding: 10px !important; }
+
+    .question-title-text {
+        font-size: 1.4rem !important;
+    }
 }
 
-@media (max-width: 480px) {
-    .card-mini-stats { min-width: 100%; padding: 20px; }
-    .card-mini-stats .number { font-size: 2.5rem; }
+/* LOGIN PAGE STYLES (login.html) */
+.login-wrapper {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
-/* ==========================================
-   LOGIN PAGE DARK MODE FIXES
-   ========================================== */
+.login-card {
+    width: 100%;
+    max-width: 440px;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-logo {
+    width: 80px;
+    /* Sesuaikan ukuran logo */
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.login-title {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.login-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.form-label-bold {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.input-full {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 15px;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 14px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.footer-link {
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* Fix: Login form input text visibility di dark mode */
 [data-theme="dark"] .login-card .form-input {
     background: rgba(255, 255, 255, 0.1);
     color: #ffffff;
     border-color: rgba(255, 255, 255, 0.2);
 }
+
 [data-theme="dark"] .login-card .form-input::placeholder {
     color: rgba(255, 255, 255, 0.4);
 }
+
 [data-theme="dark"] .login-card .form-label-bold {
     color: #e2e8f0;
 }
