@@ -20,6 +20,25 @@ def dashboard():
     t_seni = SurveyResponse.query.filter_by(hasil_rekomendasi='Seni & Desain').count()
     t_soshum = SurveyResponse.query.filter_by(hasil_rekomendasi='Sosial & Humaniora').count()
     
+    # Hitung keselarasan jurusan SMK vs hasil rekomendasi
+    rumpun_smk_map = {
+        'DPIB': 'Teknik & IT', 'TKP': 'Teknik & IT', 'TPM': 'Teknik & IT',
+        'TKR': 'Teknik & IT', 'TSM': 'Teknik & IT', 'TPTUP': 'Teknik & IT',
+        'TITL': 'Teknik & IT', 'TAV': 'Teknik & IT', 'TKJ': 'Teknik & IT',
+        'RPL': 'Teknik & IT', 'DKV': 'Seni & Desain', 'PRF': 'Seni & Desain'
+    }
+    t_selaras = 0
+    t_lintas = 0
+    all_data = db.session.query(Respondent, SurveyResponse).join(
+        SurveyResponse, Respondent.id == SurveyResponse.respondent_id
+    ).all()
+    for resp, survey in all_data:
+        rumpun_asal = rumpun_smk_map.get(resp.jurusan_smk, 'Lainnya')
+        if rumpun_asal == survey.hasil_rekomendasi:
+            t_selaras += 1
+        else:
+            t_lintas += 1
+    
     return render_template('admin/dashboard.html',
                            total_responden=total_responden,
                            t_teknik=t_teknik,
@@ -27,6 +46,8 @@ def dashboard():
                            t_bisnis=t_bisnis,
                            t_seni=t_seni,
                            t_soshum=t_soshum,
+                           t_selaras=t_selaras,
+                           t_lintas=t_lintas,
                            admin_name=current_user.name)
 
 @admin_bp.route('/responden')

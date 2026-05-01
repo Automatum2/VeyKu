@@ -33,8 +33,29 @@
         </div>
     </div>
 
-    <div class="chart-box">
-        <canvas id="myChart"></canvas>
+    <!-- Stat Cards Keselarasan -->
+    <div class="welcome-text" style="margin-top: 30px;">Keselarasan Jurusan</div>
+    <div class="stats-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 500px;">
+        <div class="stat-card" style="border-left: 4px solid #10B981;">
+            <div class="stat-title">✅ Selaras</div>
+            <div class="stat-number">{{ t_selaras }}</div>
+        </div>
+        <div class="stat-card" style="border-left: 4px solid #F59E0B;">
+            <div class="stat-title">🔀 Lintas Jurusan</div>
+            <div class="stat-number">{{ t_lintas }}</div>
+        </div>
+    </div>
+
+    <!-- Charts Container -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 20px;">
+        <div class="chart-box">
+            <div style="text-align: center; font-weight: 700; margin-bottom: 12px; font-size: 1rem; opacity: 0.8;">Distribusi Rumpun Jurusan</div>
+            <canvas id="myChart"></canvas>
+        </div>
+        <div class="chart-box">
+            <div style="text-align: center; font-weight: 700; margin-bottom: 12px; font-size: 1rem; opacity: 0.8;">Keselarasan Jurusan SMK</div>
+            <canvas id="selarasChart"></canvas>
+        </div>
     </div>
 
 </div>
@@ -42,12 +63,11 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
 <script>
-    const ctx = document.getElementById('myChart');
     Chart.register(ChartDataLabels);
-    
     const total = {{ total_responden }};
 
-    new Chart(ctx, {
+    // Chart 1: Distribusi Rumpun
+    new Chart(document.getElementById('myChart'), {
         type: 'doughnut',
         data: {
             labels: ['Teknik & IT', 'Sains & Medis', 'Bisnis & Manajemen', 'Seni & Desain', 'Sosial & Humaniora'],
@@ -64,10 +84,10 @@
             cutout: '60%',
             plugins: {
                 legend: {
-                    position: 'right',
+                    position: 'bottom',
                     labels: {
-                        padding: 20,
-                        font: { family: 'Inter', size: 14, weight: '600' },
+                        padding: 15,
+                        font: { family: 'Inter', size: 12, weight: '600' },
                         usePointStyle: true,
                         pointStyle: 'circle'
                     }
@@ -78,6 +98,45 @@
                     formatter: (value) => {
                         if (total === 0 || value === 0) return null;
                         return ((value / total) * 100).toFixed(0) + '%';
+                    }
+                }
+            }
+        }
+    });
+
+    // Chart 2: Keselarasan Jurusan
+    const totalSelaras = {{ t_selaras }} + {{ t_lintas }};
+    new Chart(document.getElementById('selarasChart'), {
+        type: 'doughnut',
+        data: {
+            labels: ['Selaras', 'Lintas Jurusan'],
+            datasets: [{
+                data: [{{ t_selaras }}, {{ t_lintas }}],
+                backgroundColor: ['#10B981', '#F59E0B'],
+                borderWidth: 0,
+                hoverOffset: 15
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '60%',
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        padding: 15,
+                        font: { family: 'Inter', size: 12, weight: '600' },
+                        usePointStyle: true,
+                        pointStyle: 'circle'
+                    }
+                },
+                datalabels: {
+                    color: '#fff',
+                    font: { weight: 'bold', size: 14 },
+                    formatter: (value) => {
+                        if (totalSelaras === 0 || value === 0) return null;
+                        return ((value / totalSelaras) * 100).toFixed(0) + '%';
                     }
                 }
             }
