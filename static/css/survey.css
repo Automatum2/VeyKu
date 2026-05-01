@@ -183,38 +183,38 @@
     }
 
     .navbar-brand {
-        font-size: 0.95rem;
-        gap: 5px !important;
+        font-size: 1.15rem; /* Diperbesar */
+        gap: 6px !important;
         flex-shrink: 0;
         margin: 0;
+        font-weight: 800;
     }
 
     .navbar-brand img {
-        width: 20px;
-        height: 20px;
+        width: 24px; /* Diperbesar */
+        height: 24px;
     }
 
     .navbar-nav {
-        gap: 15px;
-        /* Jarak yang sama antar elemen (Survey, About, Icons) */
+        gap: 10px; /* Dirapatkan agar lebih padat */
         flex-shrink: 0;
         justify-content: center;
     }
 
     .nav-link {
-        font-size: 0.72rem;
+        font-size: 0.75rem;
         font-weight: 700;
         padding: 4px 0;
     }
 
     .nav-icon {
-        width: 32px;
-        height: 32px;
+        width: 34px;
+        height: 34px;
     }
 
     .nav-icon svg {
-        width: 15px;
-        height: 15px;
+        width: 16px;
+        height: 16px;
     }
 }
 
