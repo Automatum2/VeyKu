@@ -172,7 +172,7 @@
         top: 10px;
         justify-content: center;
         /* Rata tengah agar semua elemen berkumpul seimbang */
-        gap: 12px;
+        gap: 18px;
         /* Jarak antara Logo Veyku dan kumpulan menu */
         width: fit-content;
         min-width: 92%;
@@ -195,7 +195,7 @@
     }
 
     .navbar-nav {
-        gap: 12px;
+        gap: 15px;
         /* Jarak yang sama antar elemen (Survey, About, Icons) */
         flex-shrink: 0;
         justify-content: center;
