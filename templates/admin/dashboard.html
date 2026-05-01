@@ -35,25 +35,25 @@
 
     <!-- Stat Cards Keselarasan -->
     <div class="welcome-text" style="margin-top: 30px;">Keselarasan Jurusan</div>
-    <div class="stats-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 500px;">
-        <div class="stat-card" style="border-left: 4px solid #10B981;">
+    <div class="stats-grid selaras-grid">
+        <div class="stat-card selaras-card">
             <div class="stat-title">✅ Selaras</div>
             <div class="stat-number">{{ t_selaras }}</div>
         </div>
-        <div class="stat-card" style="border-left: 4px solid #F59E0B;">
+        <div class="stat-card lintas-card">
             <div class="stat-title">🔀 Lintas Jurusan</div>
             <div class="stat-number">{{ t_lintas }}</div>
         </div>
     </div>
 
     <!-- Charts Container -->
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 20px;">
+    <div class="charts-grid">
         <div class="chart-box">
-            <div style="text-align: center; font-weight: 700; margin-bottom: 12px; font-size: 1rem; opacity: 0.8;">Distribusi Rumpun Jurusan</div>
+            <div class="chart-box-title">Distribusi Rumpun Jurusan</div>
             <canvas id="myChart"></canvas>
         </div>
         <div class="chart-box">
-            <div style="text-align: center; font-weight: 700; margin-bottom: 12px; font-size: 1rem; opacity: 0.8;">Keselarasan Jurusan SMK</div>
+            <div class="chart-box-title">Keselarasan Jurusan SMK</div>
             <canvas id="selarasChart"></canvas>
         </div>
     </div>
