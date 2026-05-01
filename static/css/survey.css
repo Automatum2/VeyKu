@@ -227,12 +227,12 @@
 
 @media (max-width: 380px) {
     .navbar {
-        gap: 8px;
+        gap: 16px;
         padding: 6px 10px;
     }
 
     .navbar-nav {
-        gap: 8px;
+        gap: 10px;
     }
 
     .navbar-brand {
