@@ -34,6 +34,13 @@ body {
     z-index: 100;
 }
 
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
 @media (max-width: 600px) {
     .navbar {
         flex-direction: column;
@@ -192,7 +199,7 @@ body {
 }
 
 canvas {
-    max-width: 500px;
+    max-width: 100%;
 }
 
 /* --- Table Container (Dashboard) --- */
@@ -468,6 +475,8 @@ tbody tr:hover {
     padding: 20px;
     border-radius: var(--rounded-lg);
     box-shadow: var(--shadow-sm);
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 /* Respondent Detail Helpers */
@@ -657,8 +666,14 @@ tbody tr:hover {
 
 /* --- Mobile Responsive --- */
 @media (max-width: 768px) {
+    .dashboard-container {
+        padding: 0 12px;
+        margin: 20px auto;
+    }
+
     .charts-grid {
         grid-template-columns: 1fr;
+        gap: 16px;
     }
 
     .selaras-grid {
@@ -667,25 +682,17 @@ tbody tr:hover {
     }
 
     .chart-box {
-        height: 300px;
+        height: 280px;
+        padding: 15px;
+    }
+
+    .chart-box-title {
+        font-size: 0.85rem;
+        margin-bottom: 8px;
     }
 
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
-    }
-
-    .stat-number {
-        font-size: 2rem;
-    }
-
-    .welcome-text {
-        font-size: 1.2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .stats-grid {
-        grid-template-columns: 1fr 1fr;
         gap: 10px;
     }
 
@@ -694,6 +701,95 @@ tbody tr:hover {
     }
 
     .stat-number {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
+    }
+
+    .stat-title {
+        font-size: 0.75rem;
+    }
+
+    .welcome-text {
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+    }
+
+    .chart-container {
+        height: 280px;
+        padding: 15px;
+    }
+
+    .navbar {
+        padding: 12px 15px;
+    }
+
+    .navbar h2 {
+        font-size: 1.2rem;
+    }
+
+    .navbar > div {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .btn-ghost, .logout-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+
+    .container {
+        padding: 0 12px;
+        margin: 20px auto;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .data-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .card-split {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .result-highlight h1 {
+        font-size: 1.8rem;
+    }
+
+    .table-card {
+        padding: 15px;
+    }
+
+    th, td {
+        padding: 10px 8px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .stat-card {
+        padding: 12px;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+    }
+
+    .chart-box {
+        height: 250px;
+        padding: 10px;
+    }
+
+    .navbar h2 {
+        font-size: 1rem;
     }
 }
