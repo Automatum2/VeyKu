@@ -166,17 +166,20 @@
 
 @media (max-width: 768px) {
     .navbar {
-        margin: 10px 8px 0;
-        padding: 8px 12px;
+        margin: 10px 10px 0;
+        padding: 8px 16px;
         top: 10px;
-        gap: 5px;
+        gap: 12px; /* Gap seimbang antara Brand dan Nav items */
+        justify-content: center; /* Rata tengah agar tidak ada bolong di tengah */
+        width: fit-content;
+        min-width: 90%;
     }
     .navbar.scrolled {
-        padding: 6px 12px;
+        padding: 6px 16px;
     }
     .navbar-brand {
-        font-size: 1rem;
-        gap: 4px !important;
+        font-size: 0.95rem;
+        gap: 6px !important;
         flex-shrink: 0;
     }
     .navbar-brand img {
@@ -184,35 +187,32 @@
         height: 20px;
     }
     .navbar-nav {
-        gap: 6px;
+        gap: 12px; /* Gap seimbang antar menu navigasi */
         flex-shrink: 0;
     }
     .nav-link {
-        font-size: 0.7rem;
-        padding: 4px 6px;
+        font-size: 0.75rem;
+        padding: 4px 2px;
     }
     .nav-icon {
-        width: 30px;
-        height: 30px;
+        width: 32px;
+        height: 32px;
         flex-shrink: 0;
     }
     .nav-icon svg {
-        width: 15px;
-        height: 15px;
+        width: 16px;
+        height: 16px;
     }
 }
 
-/* Optimasi ekstra untuk HP dengan layar sangat sempit */
+/* Optimasi untuk HP layar sangat kecil */
 @media (max-width: 380px) {
     .navbar {
-        padding: 6px 8px;
-        margin: 8px 5px 0;
+        gap: 8px;
+        padding: 6px 12px;
     }
     .navbar-nav {
-        gap: 4px;
-    }
-    .nav-link {
-        font-size: 0.65rem;
+        gap: 8px;
     }
     .navbar-brand {
         font-size: 0.9rem;
