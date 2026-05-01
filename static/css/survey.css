@@ -735,32 +735,77 @@
 }
 
 .hero-title-landing {
-    font-size: 3.5rem;
-    font-weight: 800;
+    font-size: 3.8rem;
+    font-weight: 900;
     color: var(--text-dark);
-    line-height: 1.2;
-    letter-spacing: -1.5px;
+    line-height: 1.1;
+    letter-spacing: -2px;
     margin-bottom: 24px;
     max-width: 900px;
+    animation: fadeInUp 0.8s ease-out both;
 }
 
 .hero-title-landing span {
     color: var(--primary-blue);
+    position: relative;
+    display: inline-block;
+    text-shadow: 0 0 20px rgba(37, 99, 235, 0.2);
 }
 
 .hero-subtitle-landing {
-    font-size: 1.1rem;
-    color: #4a5568;
-    max-width: 600px;
+    font-size: 1.2rem;
+    color: #64748b;
+    max-width: 650px;
     line-height: 1.6;
     margin-bottom: 40px;
-    font-weight: 400;
+    font-weight: 500;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+/* Background Blobs */
+.blob {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(40px);
+    z-index: -1;
+    animation: blobFloat 20s infinite alternate;
+}
+
+.blob-1 { top: -10%; left: -10%; background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%); }
+.blob-2 { bottom: 10%; right: -5%; animation-delay: -5s; background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%); }
+.blob-3 { top: 40%; left: 30%; animation-duration: 25s; opacity: 0.5; }
+
+@keyframes blobFloat {
+    0% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .hero-btn-large {
-    padding: 16px 48px;
-    font-size: 1.1rem;
-    border-radius: 12px;
+    padding: 18px 52px;
+    font-size: 1.15rem;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #4f46e5 100%);
+    color: white;
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+    border: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.hero-btn-large:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(37, 99, 235, 0.4);
+    filter: brightness(1.1);
 }
 
 /* Steps Section */
