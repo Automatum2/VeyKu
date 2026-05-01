@@ -734,6 +734,20 @@
     z-index: 1;
 }
 
+.hero-img-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.hero-img-top {
+    width: 100%;
+    max-width: 250px; /* Ukuran dikembalikan ke semula */
+    height: auto;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
 .hero-title-landing {
     font-size: 3.8rem;
     font-weight: 900;
