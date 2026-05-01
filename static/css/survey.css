@@ -166,51 +166,44 @@
 
 @media (max-width: 768px) {
     .navbar {
-        margin: 10px 12px 0;
-        padding: 10px 16px;
+        margin: 10px 10px 0;
+        padding: 8px 12px;
         top: 10px;
-        justify-content: space-between; /* Logo kiri, Menu kanan */
-        width: auto;
-        min-width: 0;
-        gap: 10px;
+        justify-content: center; /* Rata tengah agar semua elemen berkumpul seimbang */
+        gap: 12px; /* Jarak antara Logo Veyku dan kumpulan menu */
+        width: fit-content;
+        min-width: 92%;
     }
     .navbar.scrolled {
-        padding: 8px 16px;
+        padding: 6px 12px;
     }
     .navbar-brand {
-        font-size: 1rem;
-        gap: 6px !important;
+        font-size: 0.95rem;
+        gap: 5px !important;
         flex-shrink: 0;
-        font-weight: 800;
+        margin: 0;
     }
     .navbar-brand img {
-        width: 22px;
-        height: 22px;
+        width: 20px;
+        height: 20px;
     }
     .navbar-nav {
-        gap: 10px; /* Jarak antar menu di kanan */
+        gap: 12px; /* Jarak yang sama antar elemen (Survey, About, Icons) */
         flex-shrink: 0;
-        align-items: center;
+        justify-content: center;
     }
     .nav-link {
-        font-size: 0.75rem;
+        font-size: 0.72rem;
         font-weight: 700;
-        color: var(--text-primary);
-        padding: 4px 2px;
-        opacity: 0.8;
+        padding: 4px 0;
     }
     .nav-icon {
-        width: 34px;
-        height: 34px;
-        background: rgba(255, 255, 255, 0.8); /* Background putih transparan */
-        border: 1px solid rgba(0, 0, 0, 0.05); /* Border halus */
-        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        border-radius: 50%;
-        color: var(--text-primary);
+        width: 32px;
+        height: 32px;
     }
     .nav-icon svg {
-        width: 16px;
-        height: 16px;
+        width: 15px;
+        height: 15px;
     }
 }
 
@@ -223,18 +216,14 @@
 
 @media (max-width: 380px) {
     .navbar {
-        margin: 8px 8px 0;
-        padding: 8px 12px;
-        gap: 5px;
-    }
-    .navbar-brand {
-        font-size: 0.9rem;
+        gap: 8px;
+        padding: 6px 10px;
     }
     .navbar-nav {
-        gap: 6px;
+        gap: 8px;
     }
-    .nav-link {
-        font-size: 0.7rem;
+    .navbar-brand {
+        font-size: 0.85rem;
     }
 }
 
