@@ -65,12 +65,15 @@
 <script>
     Chart.register(ChartDataLabels);
     const total = {{ total_responden }};
+    const isMobile = window.innerWidth < 768;
 
     // Chart 1: Distribusi Rumpun
     new Chart(document.getElementById('myChart'), {
         type: 'doughnut',
         data: {
-            labels: ['Teknik & IT', 'Sains & Medis', 'Bisnis & Manajemen', 'Seni & Desain', 'Sosial & Humaniora'],
+            labels: isMobile 
+                ? ['Teknik', 'Medis', 'Bisnis', 'Seni', 'Sosial']
+                : ['Teknik & IT', 'Sains & Medis', 'Bisnis & Manajemen', 'Seni & Desain', 'Sosial & Humaniora'],
             datasets: [{
                 data: [{{ t_teknik }}, {{ t_medis }}, {{ t_bisnis }}, {{ t_seni }}, {{ t_soshum }}],
                 backgroundColor: ['#3B82F6', '#10B981', '#F59E0B', '#EC4899', '#8B5CF6'],
@@ -86,15 +89,16 @@
                 legend: {
                     position: 'bottom',
                     labels: {
-                        padding: 15,
-                        font: { family: 'Inter', size: 12, weight: '600' },
+                        padding: isMobile ? 8 : 15,
+                        font: { family: 'Inter', size: isMobile ? 10 : 12, weight: '600' },
                         usePointStyle: true,
-                        pointStyle: 'circle'
+                        pointStyle: 'circle',
+                        boxWidth: isMobile ? 8 : 12
                     }
                 },
                 datalabels: {
                     color: '#fff',
-                    font: { weight: 'bold', size: 14 },
+                    font: { weight: 'bold', size: isMobile ? 11 : 14 },
                     formatter: (value) => {
                         if (total === 0 || value === 0) return null;
                         return ((value / total) * 100).toFixed(0) + '%';
