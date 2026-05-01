@@ -166,38 +166,47 @@
 
 @media (max-width: 768px) {
     .navbar {
-        margin: 10px 10px 0;
-        padding: 8px 16px;
+        margin: 10px 12px 0;
+        padding: 10px 16px;
         top: 10px;
-        gap: 12px; /* Gap seimbang antara Brand dan Nav items */
-        justify-content: center; /* Rata tengah agar tidak ada bolong di tengah */
-        width: fit-content;
-        min-width: 90%;
+        justify-content: space-between; /* Logo kiri, Menu kanan */
+        width: auto;
+        min-width: 0;
+        gap: 10px;
     }
     .navbar.scrolled {
-        padding: 6px 16px;
+        padding: 8px 16px;
     }
     .navbar-brand {
-        font-size: 0.95rem;
+        font-size: 1rem;
         gap: 6px !important;
         flex-shrink: 0;
+        font-weight: 800;
     }
     .navbar-brand img {
-        width: 20px;
-        height: 20px;
+        width: 22px;
+        height: 22px;
     }
     .navbar-nav {
-        gap: 12px; /* Gap seimbang antar menu navigasi */
+        gap: 10px; /* Jarak antar menu di kanan */
         flex-shrink: 0;
+        align-items: center;
     }
     .nav-link {
         font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--text-primary);
         padding: 4px 2px;
+        opacity: 0.8;
     }
     .nav-icon {
-        width: 32px;
-        height: 32px;
-        flex-shrink: 0;
+        width: 34px;
+        height: 34px;
+        background: rgba(255, 255, 255, 0.8); /* Background putih transparan */
+        border: 1px solid rgba(0, 0, 0, 0.05); /* Border halus */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        border-radius: 50%;
+        color: var(--text-primary);
     }
     .nav-icon svg {
         width: 16px;
@@ -205,17 +214,27 @@
     }
 }
 
-/* Optimasi untuk HP layar sangat kecil */
+/* Penyesuaian Dark Mode untuk Ikon di Mobile */
+[data-theme="dark"] .nav-icon {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
 @media (max-width: 380px) {
     .navbar {
-        gap: 8px;
-        padding: 6px 12px;
-    }
-    .navbar-nav {
-        gap: 8px;
+        margin: 8px 8px 0;
+        padding: 8px 12px;
+        gap: 5px;
     }
     .navbar-brand {
         font-size: 0.9rem;
+    }
+    .navbar-nav {
+        gap: 6px;
+    }
+    .nav-link {
+        font-size: 0.7rem;
     }
 }
 
