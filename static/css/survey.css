@@ -1332,3 +1332,18 @@
     margin-top: 30px; 
     text-align: center;
 }
+
+/* Fix: Login form input text visibility di dark mode */
+[data-theme="dark"] .login-card .form-input {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .login-card .form-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+[data-theme="dark"] .login-card .form-label-bold {
+    color: #e2e8f0;
+}
