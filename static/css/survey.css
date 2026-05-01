@@ -172,7 +172,7 @@
         top: 10px;
         justify-content: center;
         /* Rata tengah agar semua elemen berkumpul seimbang */
-        gap: 18px;
+        gap: 20px;
         /* Jarak antara Logo Veyku dan kumpulan menu */
         width: fit-content;
         min-width: 92%;
